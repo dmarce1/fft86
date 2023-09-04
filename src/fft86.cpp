@@ -107,7 +107,7 @@ int main() {
 	std::vector<int> nums;
 	double tm = 0.0;
 	int R = 13;
-	for (int N = R * R; N <= 100000000; N *= R) {
+	for (int N = R * R * R * R; N <= 100000000; N *= R) {
 		tm += test(N);
 
 	}
