@@ -35,11 +35,11 @@ double test(int N) {
 		err = 0.0;
 		for (int n = 0; n < N; n++) {
 			err += std::abs(Z1[n] - Z2[n]);
-		//	printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z1[n].real(), Z1[n].imag(), Z2[n].real(),
-		//			Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
+			//	printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z1[n].real(), Z1[n].imag(), Z2[n].real(),
+			//			Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
 		}
 		err /= N;
-	//	abort();
+		//	abort();
 	}
 	printf("%20i %20e %20e %20e %20f\n", N, err, t0, t1, t0 / (1.0e-10 + t1));
 	return t1;
@@ -83,10 +83,31 @@ bool usenum(int N) {
 	return cnt > 1;
 }
 
+#include <fenv.h>
+
 int main() {
+	//feenableexcept(FE_DIVBYZERO);
+	//feenableexcept(FE_INVALID);
+//	feenableexcept(FE_OVERFLOW);
+	int N = 81;
+	int j = 0;
+	for (int i = 0; i < N; i++) {
+	if (i != N - 1) {
+			int k = N / 3;
+			j++;
+			while (2 * k < j) {
+				j -= 2 * k;
+				k /= 3;
+			}
+			j += k - 1;
+		}
+	}
+//	return 0;
+
+	std::vector<int> nums;
 	double tm = 0.0;
-	int R = 3;
-	for (int N = R * R; N <= 10000000; N *= R) {
+	int R = 13;
+	for (int N = R * R; N <= 100000000; N *= R) {
 		tm += test(N);
 
 	}

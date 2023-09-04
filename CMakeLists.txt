@@ -3,9 +3,10 @@ cmake_policy(VERSION 3.12.4)
 cmake_policy(SET CMP0003 NEW)
 cmake_policy(SET CMP0074 NEW)
 project(fft86 CXX C ASM)
-set(CMAKE_CXX_FLAGS "-march=native -fsanitize=address -g -ffast-math")
+set(CMAKE_CXX_FLAGS "-march=native -ffast-math")
 
 set(fft86_source_files
+    ./src/apply_twiddles.S
     ./src/fft_1d_batch_dif.S
     ./src/fft_1d_batch_dit.S
  	./src/fft86.cpp

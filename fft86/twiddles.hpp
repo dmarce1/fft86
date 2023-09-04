@@ -17,8 +17,8 @@ const double* get_cos_twiddles(int N);
 const double* get_sin_twiddles(int N);
 const double* get_rotated_cos_twiddles(int R, int N);
 const double* get_rotated_sin_twiddles(int R, int N);
-std::shared_ptr<std::vector<std::vector<double>>> get_6step_cos_twiddles(int N1, int N2);
-std::shared_ptr<std::vector<std::vector<double>>> get_6step_sin_twiddles(int N1, int N2);
+std::shared_ptr<std::vector<double>> get_6step_cos_twiddles(int N1, int N2);
+std::shared_ptr<std::vector<double>> get_6step_sin_twiddles(int N1, int N2);
 
 template<int N>
 class cos_twiddle_array {

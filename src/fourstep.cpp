@@ -66,59 +66,59 @@ void inv_perf_shuf(double* Z, int N2, int NLO) {
 	}
 }
 /*
-template<int N1>
-void fft_1d_batch_dif(double* Z, int N, int NLO, int level) {
-	const auto* W = get_twiddles(N);
-	const int NLO4 = round_down(NLO, v4df::size());
-	const int NLO2 = round_down(NLO, v2df::size());
-	const int& NLO1 = NLO;
-	const int N2 = N / N1;
-	const int s = 2 * NLO * N2;
-	for (int k2 = 0; k2 < N2; k2++) {
-		if (level == 0) {
-			for (int n1 = 0; n1 < N1; n1++) {
-				inv_perf_shuf(Z + 2 * NLO * k2 + s * n1, 1, NLO);
-			}
-		}
-		std::array<double, 8 * N1> w;
-		for (int n = 0; n < N1; n++) {
-			for (int l = 0; l < 4; l++) {
-				w[8 * n + l] = W[n * k2].real();
-				w[8 * n + l + 4] = W[n * k2].imag();
-			}
-		}
-		for (int ilo = 0; ilo < NLO4; ilo += v4df::size()) {
-			double* x = Z + 2 * (ilo + NLO * k2);
-			double* y = x + 4;
-			sfft_complex_dif_w4(x, y, s, N1, w.data());
-		}
-		if (NLO2 > NLO4) {
-			double* x = Z + 2 * (NLO4 + NLO * k2);
-			double* y = x + 2;
-			for (int n = 0; n < N1; n++) {
-				for (int l = 0; l < 2; l++) {
-					w[4 * n + l] = W[n * k2].real();
-					w[4 * n + l + 2] = W[n * k2].imag();
-				}
-			}
-			sfft_complex_dif_w2(x, y, s, N1, w.data());
-		}
-		if (NLO1 > NLO4 && NLO1 != NLO2) {
-			double* x = Z + 2 * (NLO2 + NLO * k2);
-			double* y = x + 1;
-			for (int n = 0; n < N1; n++) {
-				w[2 * n] = W[n * k2].real();
-				w[2 * n + 1] = W[n * k2].imag();
-			}
-			sfft_complex_dif_w1(x, y, s, N1, w.data());
-		}
-	}
-	if (N2 > 1) {
-		for (int n1 = 0; n1 < N1; n1++) {
-			fft_1d_batch_dif<N1>(Z + 2 * n1 * NLO * N2, N2, NLO, level + 1);
-		}
-	}
-}*/
+ template<int N1>
+ void fft_1d_batch_dif(double* Z, int N, int NLO, int level) {
+ const auto* W = get_twiddles(N);
+ const int NLO4 = round_down(NLO, v4df::size());
+ const int NLO2 = round_down(NLO, v2df::size());
+ const int& NLO1 = NLO;
+ const int N2 = N / N1;
+ const int s = 2 * NLO * N2;
+ for (int k2 = 0; k2 < N2; k2++) {
+ if (level == 0) {
+ for (int n1 = 0; n1 < N1; n1++) {
+ inv_perf_shuf(Z + 2 * NLO * k2 + s * n1, 1, NLO);
+ }
+ }
+ std::array<double, 8 * N1> w;
+ for (int n = 0; n < N1; n++) {
+ for (int l = 0; l < 4; l++) {
+ w[8 * n + l] = W[n * k2].real();
+ w[8 * n + l + 4] = W[n * k2].imag();
+ }
+ }
+ for (int ilo = 0; ilo < NLO4; ilo += v4df::size()) {
+ double* x = Z + 2 * (ilo + NLO * k2);
+ double* y = x + 4;
+ sfft_complex_dif_w4(x, y, s, N1, w.data());
+ }
+ if (NLO2 > NLO4) {
+ double* x = Z + 2 * (NLO4 + NLO * k2);
+ double* y = x + 2;
+ for (int n = 0; n < N1; n++) {
+ for (int l = 0; l < 2; l++) {
+ w[4 * n + l] = W[n * k2].real();
+ w[4 * n + l + 2] = W[n * k2].imag();
+ }
+ }
+ sfft_complex_dif_w2(x, y, s, N1, w.data());
+ }
+ if (NLO1 > NLO4 && NLO1 != NLO2) {
+ double* x = Z + 2 * (NLO2 + NLO * k2);
+ double* y = x + 1;
+ for (int n = 0; n < N1; n++) {
+ w[2 * n] = W[n * k2].real();
+ w[2 * n + 1] = W[n * k2].imag();
+ }
+ sfft_complex_dif_w1(x, y, s, N1, w.data());
+ }
+ }
+ if (N2 > 1) {
+ for (int n1 = 0; n1 < N1; n1++) {
+ fft_1d_batch_dif<N1>(Z + 2 * n1 * NLO * N2, N2, NLO, level + 1);
+ }
+ }
+ }*/
 
 template<int N1>
 void fft_1d_batch_dit(double* Z, int N, int NLO, int level) {
@@ -178,7 +178,7 @@ void fft_1d_batch_dit(double* Z, int N, int NLO, int level) {
 		}
 	}
 }
-
+/*
 template<int R>
 void apply_twiddles(std::complex<double>* Z, int N1, int N2) {
 	const auto& P = get_digit_reversal(R, N2);
@@ -237,10 +237,11 @@ void apply_twiddles(std::complex<double>* Z, int N1, int N2) {
 			*Y = y;
 		}
 	}
-}
+}*/
 
 extern "C" void fft_1d_batch_dif(double* Z, const double* W, int N1, int N, int NLO);
 extern "C" void fft_1d_batch_dit(double* Z, const double* W, int N1, int N, int NLO);
+extern "C" void apply_twiddles(double* Z, const double* W, const double*, int R, int N1, int N2);
 
 template<int R>
 void fft_1d(std::complex<double>* Z, int N) {
@@ -258,8 +259,11 @@ void fft_1d(std::complex<double>* Z, int N) {
 	fft_1d_batch_dif((double*) Z, (const double*) W1, R, N1, N2);
 	tm2.stop();
 
+	const auto& Wr = *get_6step_cos_twiddles(N2, N1);
+	const auto& Wi = *get_6step_sin_twiddles(N2, N1);
 	tm3.start();
-	apply_twiddles<R>(Z, N2, N1);
+//	apply_twiddles<R>(Z, N2, N1);
+	apply_twiddles((double*) Z, Wr.data(), Wi.data(), R, N2, N1);
 	tm3.stop();
 
 	tm4.start();
@@ -279,7 +283,7 @@ void fft_1d(std::complex<double>* Z, int N) {
 double fft_1d(std::complex<double>* Z, int N) {
 	timer tm;
 	tm.start();
-	int R = 3;
+	int R = 4;
 	while (N % R != 0) {
 		R++;
 	}
@@ -307,6 +311,9 @@ double fft_1d(std::complex<double>* Z, int N) {
 		break;
 	case 11:
 		fft_1d<11>(Z, N);
+		break;
+	case 13:
+		fft_1d<13>(Z, N);
 		break;
 	case 25:
 		fft_1d<25>(Z, N);

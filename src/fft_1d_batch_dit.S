@@ -56,17 +56,13 @@ fft_1d_batch_dit:
               mov            %rbp, %rsp
               pop            %rbp
               ret
-
 next_level:   xor            %rdx, %rdx
               mov            N, %rax
               divq           N1
               mov            %rax, N2
-
-
               mov            N1, %rax
               cmp            %rax, N
               je             skip_levels
-
               xor            I, I
 next_loop:    push           X
               push           NTW
@@ -97,8 +93,6 @@ next_loop:    push           X
               inc            I
               cmp            I, N1
               jne            next_loop
-
-
 skip_levels:  xor            k2, k2
 k2loop:       mov            $1, I
 w4:           mov            NTW, %rax
