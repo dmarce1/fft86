@@ -18,7 +18,7 @@
 #include <cstdlib>
 #include <cstdio>
 
-#define NTRIAL 11
+#define NTRIAL 101
 double test(int N) {
 	double err, t0 = 0, t1 = 0;
 	for (int n = 0; n < NTRIAL + 1; n++) {
@@ -26,7 +26,7 @@ double test(int N) {
 		for (int n = 0; n < N; n++) {
 			Z1[n] = Z2[n] = std::complex<double>(rand1(), rand1());
 		}
-		Z1[3] = Z2[3] = 1.0;
+		//Z1[3] = Z2[3] = 1.0;
 		t0 += fftw(Z2.data(), N);
 		t1 += fft_1d(Z1.data(), N);
 		if (n == 0) {
@@ -35,11 +35,11 @@ double test(int N) {
 		err = 0.0;
 		for (int n = 0; n < N; n++) {
 			err += std::abs(Z1[n] - Z2[n]);
-			//	printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z1[n].real(), Z1[n].imag(), Z2[n].real(),
-			//			Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
+		//	printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z1[n].real(), Z1[n].imag(), Z2[n].real(),
+		//			Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
 		}
 		err /= N;
-		//	abort();
+		//abort();
 	}
 	printf("%20i %20e %20e %20e %20f\n", N, err, t0, t1, t0 / (1.0e-10 + t1));
 	return t1;
@@ -89,27 +89,50 @@ int main() {
 	//feenableexcept(FE_DIVBYZERO);
 	//feenableexcept(FE_INVALID);
 //	feenableexcept(FE_OVERFLOW);
-	int N = 81;
-	int j = 0;
-	for (int i = 0; i < N; i++) {
-	if (i != N - 1) {
-			int k = N / 3;
-			j++;
-			while (2 * k < j) {
-				j -= 2 * k;
-				k /= 3;
-			}
-			j += k - 1;
-		}
-	}
 //	return 0;
-
+#define NMAX (1024*1024)
 	std::vector<int> nums;
-	double tm = 0.0;
-	int R = 13;
-	for (int N = R * R * R * R; N <= 100000000; N *= R) {
-		tm += test(N);
+	int R = 4;
+	int N = R * R;
+	while (N < NMAX) {
+		nums.push_back(N);
+		N *= R;
+	}
+	R = 5;
+	N = R * R;
+	while (N < NMAX) {
+		nums.push_back(N);
+		N *= R;
+	}
+	R = 7;
+	N = R * R;
+	while (N < NMAX) {
+		nums.push_back(N);
+		N *= R;
+	}
+	R = 9;
+	N = R * R;
+	while (N < NMAX) {
+		nums.push_back(N);
+		N *= R;
+	}
+	R = 11;
+	N = R * R;
+	while (N < NMAX) {
+		nums.push_back(N);
+		N *= R;
+	}
+	R = 13;
+	N = R * R;
+	while (N < NMAX) {
+		nums.push_back(N);
+		N *= R;
+	}
 
+	std::sort(nums.begin(), nums.end());
+	double tm = 0.0;
+	for (auto nm : nums) {
+		test(nm);
 	}
 	return 0;
 }

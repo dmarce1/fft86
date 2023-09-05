@@ -242,6 +242,7 @@ void apply_twiddles(std::complex<double>* Z, int N1, int N2) {
 extern "C" void fft_1d_batch_dif(double* Z, const double* W, int N1, int N, int NLO);
 extern "C" void fft_1d_batch_dit(double* Z, const double* W, int N1, int N, int NLO);
 extern "C" void apply_twiddles(double* Z, const double* W, const double*, int R, int N1, int N2);
+timer tm1, tm2, tm3, tm4;
 
 template<int R>
 void fft_1d(std::complex<double>* Z, int N) {
@@ -250,9 +251,7 @@ void fft_1d(std::complex<double>* Z, int N) {
 	for (int i = 0; i < ilogb; i++) {
 		N1 *= R;
 	}
-	timer tm1, tm2, tm3, tm4;
 	int N2 = N / N1;
-	//std::swap(N1, N2);
 
 	tm2.start();
 	const auto* W1 = get_twiddles(N1);
@@ -262,7 +261,6 @@ void fft_1d(std::complex<double>* Z, int N) {
 	const auto& Wr = *get_6step_cos_twiddles(N2, N1);
 	const auto& Wi = *get_6step_sin_twiddles(N2, N1);
 	tm3.start();
-//	apply_twiddles<R>(Z, N2, N1);
 	apply_twiddles((double*) Z, Wr.data(), Wi.data(), R, N2, N1);
 	tm3.stop();
 

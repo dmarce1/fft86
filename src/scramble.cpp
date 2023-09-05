@@ -29,7 +29,7 @@ const std::vector<int>& get_digit_reversal(int R, int N) {
 	}
 	return iter->second;
 }
-
+/*
 void scramble_hi(double* X, int R, int NHI, int NLO) {
 	const auto& P = get_digit_reversal(R, NHI);
 	for (int i = 0; i < NHI; i++) {
@@ -42,11 +42,10 @@ void scramble_hi(double* X, int R, int NHI, int NLO) {
 			}
 		}
 	}
-}
+}*/
 
-void scramble_hi(std::complex<double>* X, int R, int NHI, int NLO) {
-	scramble_hi((double*) X, R, NHI, NLO << 1);
-}
+extern "C" void scramble_hi(std::complex<double>* X, int R, int NHI, int NLO);
+
 
 void scramble(double* X, int R, int N) {
 	int N1 = N;
@@ -54,9 +53,9 @@ void scramble(double* X, int R, int N) {
 		N1 /= R;
 	}
 	const int N2 = N / (N1 * N1);
-	scramble_hi(X, R, N1, N1 * N2);
-	transpose(X, N1, N2);
-	scramble_hi(X, R, N1, N1 * N2);
+//	scramble_hi(X, R, N1, N1 * N2);
+//	transpose(X, N1, N2);
+//	scramble_hi(X, R, N1, N1 * N2);
 }
 
 void scramble(std::complex<double>* X, int R, int N) {
@@ -65,7 +64,7 @@ void scramble(std::complex<double>* X, int R, int N) {
 		N1 /= R;
 	}
 	const int N2 = N / (N1 * N1);
-	scramble_hi(X, R, N1, N1 * N2);
+	scramble_hi(X, R, N1, (N1 * N2) << 1);
 	transpose(X, N1, N2);
-	scramble_hi(X, R, N1, N1 * N2);
+	scramble_hi(X, R, N1, (N1 * N2) << 1);
 }

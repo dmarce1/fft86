@@ -18,7 +18,7 @@
 void scramble(std::complex<double>* X, int R, int N);
 void scramble(double* X, int R, int N);
 const std::vector<int>& get_digit_reversal(int R, int N);
-void scramble_hi(std::complex<double>* X, int R, int NHI, int NLO);
+//void scramble_hi(std::complex<double>* X, int R, int NHI, int NLO);
 
 
 #endif /* SCRAMBLE_HPP_ */

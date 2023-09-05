@@ -62,14 +62,12 @@ n1loop_begin: cmp            n1, N14
               imul           N1, %rax
               add            n1, %rax
               shl            %rax
-              vmovupd        (Wr, %rdx, 8), %ymm10
-              vmovupd        (Wi, %rdx, 8), %ymm11
               vmovupd        (X, %rax, 8), %ymm0
               vmovupd        32(X, %rax, 8), %ymm1
-              vmulpd         %ymm11, %ymm1, %ymm2
-              vmulpd         %ymm10, %ymm1, %ymm3
-              vfmsub231pd    %ymm10, %ymm0, %ymm2
-              vfmadd231pd    %ymm11, %ymm0, %ymm3
+              vmulpd         (Wi, %rdx, 8), %ymm1, %ymm2
+              vmulpd         (Wr, %rdx, 8), %ymm1, %ymm3
+              vfmsub231pd    (Wr, %rdx, 8), %ymm0, %ymm2
+              vfmadd231pd    (Wi, %rdx, 8), %ymm0, %ymm3
               vperm2f128     $0x20, %ymm3, %ymm2, %ymm0
               vperm2f128     $0x31, %ymm3, %ymm2, %ymm1
               vpermpd        $216, %ymm0, %ymm0
@@ -88,14 +86,12 @@ n1loop_end:   mov            N12, %rax
               imul           N1, %rax
               add            N14, %rax
               shl            %rax
-              vmovupd        (Wr, %rdx, 8), %xmm10
-              vmovupd        (Wi, %rdx, 8), %xmm11
               vmovupd        (X, %rax, 8), %xmm0
               vmovupd        16(X, %rax, 8), %xmm1
-              vmulpd         %xmm11, %xmm1, %xmm2
-              vmulpd         %xmm10, %xmm1, %xmm3
-              vfmsub231pd    %xmm10, %xmm0, %xmm2
-              vfmadd231pd    %xmm11, %xmm0, %xmm3
+              vmulpd         (Wi, %rdx, 8), %xmm1, %xmm2
+              vmulpd         (Wr, %rdx, 8), %xmm1, %xmm3
+              vfmsub231pd    (Wr, %rdx, 8), %xmm0, %xmm2
+              vfmadd231pd    (Wi, %rdx, 8), %xmm0, %xmm3
               vmovupd        %xmm2, (X, %rax, 8)
               vmovupd        %xmm3, 16(X, %rax, 8)
               vmovq          8(X, %rax, 8), %xmm0
@@ -111,14 +107,12 @@ skip2:        cmp            N1, N12
               imul           N1, %rax
               add            N12, %rax
               shl            %rax
-              vmovq          (Wr, %rdx, 8), %xmm10
-              vmovq          (Wi, %rdx, 8), %xmm11
               vmovq          (X, %rax, 8), %xmm0
               vmovq          8(X, %rax, 8), %xmm1
-              vmulsd         %xmm11, %xmm1, %xmm2
-              vmulsd         %xmm10, %xmm1, %xmm3
-              vfmsub231sd    %xmm10, %xmm0, %xmm2
-              vfmadd231sd    %xmm11, %xmm0, %xmm3
+              vmulsd         (Wi, %rdx, 8), %xmm1, %xmm2
+              vmulsd         (Wr, %rdx, 8), %xmm1, %xmm3
+              vfmsub231sd    (Wr, %rdx, 8), %xmm0, %xmm2
+              vfmadd231sd    (Wi, %rdx, 8), %xmm0, %xmm3
               vmovq          %xmm2, (X, %rax, 8)
               vmovq          %xmm3, 8(X, %rax, 8)
 skip1:        cmp            k2, Nm1

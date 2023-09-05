@@ -1,9 +1,10 @@
-#define       X              %r13
-#define       Ix             %r12
-#define       Iy             %r11
-#define       D1             %r10
-#define       N              %r9
-#define       M              %r8
+#define       X              %rdi
+#define       D1             %rsi
+#define       Ix             %r8
+#define       Iy             %r9
+#define       twoD1          %r10
+#define       N              %r11
+#define       M              %r12
 
               .global        transpose_complex
 
@@ -11,12 +12,11 @@
 
 transpose_complex:
               push           %r12
-              push           %r13
               push           %rbx
-              mov            %rdi, X
-              mov            %rsi, D1
               mov            %rdx, N
               mov            %rcx, M
+              mov            D1, twoD1
+              shl            twoD1
               mov            N, %rax
               dec            %rax
               bsr            %rax, %rcx
@@ -28,7 +28,6 @@ transpose_complex:
               xor            Iy, Iy
               call           next_level
               pop            %rbx
-              pop            %r13
               pop            %r12
               ret
 next_level:   cmp            Ix, Iy
@@ -37,17 +36,14 @@ next_level:   cmp            Ix, Iy
               jle            done
               cmp            Iy, N
               jle            done
-              cmp            $2, M
-              jg             do_next
               mov            Ix, %rax
-              mov            Iy, %rdx
+              cmp            Ix, Iy
+              cmovg          Iy, %rax
               add            M, %rax
-              add            M, %rdx
               cmp            %rax, N
               jl             do_next
-              cmp            %rdx, N
-              jl             do_next
               cmp            $2, M
+              jg             do_next
               jne            single
               cmp            Ix, Iy
               je             diagonal
@@ -57,22 +53,18 @@ next_level:   cmp            Ix, Iy
               imul           D1, %rcx
               add            Iy, %rax
               add            Ix, %rcx
+              shl            %rax
+              shl            %rcx
               mov            %rax, %rbx
               mov            %rcx, %rdx
-              add            D1, %rbx
-              add            D1, %rdx
-              shl            %rax
-              shl            %rbx
-              shl            %rcx
-              shl            %rdx
+              add            twoD1, %rbx
+              add            twoD1, %rdx
               vmovupd        (X, %rax, 8), %ymm0
-              vmovupd        (X, %rbx, 8), %ymm1
               vmovupd        (X, %rcx, 8), %ymm2
-              vmovupd        (X, %rdx, 8), %ymm3
-              vperm2f128     $0x20, %ymm1, %ymm0, %ymm6
-              vperm2f128     $0x31, %ymm1, %ymm0, %ymm7
-              vperm2f128     $0x20, %ymm3, %ymm2, %ymm4
-              vperm2f128     $0x31, %ymm3, %ymm2, %ymm5
+              vperm2f128     $0x20, (X, %rbx, 8), %ymm0, %ymm6
+              vperm2f128     $0x31, (X, %rbx, 8), %ymm0, %ymm7
+              vperm2f128     $0x20, (X, %rdx, 8), %ymm2, %ymm4
+              vperm2f128     $0x31, (X, %rdx, 8), %ymm2, %ymm5
               vmovupd        %ymm4, (X, %rax, 8)
               vmovupd        %ymm5, (X, %rbx, 8)
               vmovupd        %ymm6, (X, %rcx, 8)
@@ -86,9 +78,8 @@ diagonal:     mov            Ix, %rax
               shl            %rax
               shl            %rdx
               vmovupd        (X, %rax, 8), %ymm0
-              vmovupd        (X, %rdx, 8), %ymm1
-              vperm2f128     $0x20, %ymm1, %ymm0, %ymm2
-              vperm2f128     $0x31, %ymm1, %ymm0, %ymm3
+              vperm2f128     $0x20, (X, %rdx, 8), %ymm0, %ymm2
+              vperm2f128     $0x31, (X, %rdx, 8), %ymm0, %ymm3
               vmovupd        %ymm2, (X, %rax, 8)
               vmovupd        %ymm3, (X, %rdx, 8)
               jmp            done
