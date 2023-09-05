@@ -34,9 +34,9 @@ apply_twiddles:
               mov            %rcx, R
               mov            %r8, N1
               mov            %r9, N2
-              xor            %rdx, %rdx
-              mov            N2, %rax
-              div            R
+              xor            %edx, %edx
+              mov            %r10, %rax
+              div            %r12d
               mov            %rax, N2oR
               mov            R, %rdx
               dec            %rdx
@@ -92,12 +92,10 @@ n1loop_end:   mov            N12, %rax
               vmulpd         (Wr, %rdx, 8), %xmm1, %xmm3
               vfmsub231pd    (Wr, %rdx, 8), %xmm0, %xmm2
               vfmadd231pd    (Wi, %rdx, 8), %xmm0, %xmm3
-              vmovupd        %xmm2, (X, %rax, 8)
-              vmovupd        %xmm3, 16(X, %rax, 8)
-              vmovq          8(X, %rax, 8), %xmm0
-              vmovq          16(X, %rax, 8), %xmm1
-              vmovq          %xmm1, 8(X, %rax, 8)
-              vmovq          %xmm0, 16(X, %rax, 8)
+              vshufpd        $0, %xmm3, %xmm2, %xmm0
+              vshufpd        $3, %xmm3, %xmm2, %xmm1
+              vmovupd        %xmm0, (X, %rax, 8)
+              vmovupd        %xmm1, 16(X, %rax, 8)
 skip2:        cmp            N1, N12
               je             skip1
               mov            k2, %rdx
@@ -124,9 +122,9 @@ revcntr_loop: mov            I, %rax
               cmp            %rax, k2rev
               jle            revcntr_done
               sub            %rax, k2rev
-              xor            %rdx, %rdx
+              xor            %edx, %edx
               mov            I, %rax
-              divq           R
+              div            %r12d
               mov            %rax, I
               jmp            revcntr_loop
 revcntr_done: add            I, k2rev
@@ -141,13 +139,5 @@ skip_revcntr: inc            k2
               leave
               ret
               .align         32
-IOTA:         .quad          0
-              .quad          2
-              .quad          4
-              .quad          6
-ALL_TRUE:     .double        -1
-              .double        -1
-              .double        -1
-              .double        -1
 ONE:          .double        1.0
 ZERO:         .double        0.0

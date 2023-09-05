@@ -56,9 +56,9 @@ fft_1d_batch_dif:
               mov            %rbp, %rsp
               pop            %rbp
               ret
-next_level:   xor            %rdx, %rdx
+next_level:   xor            %edx, %edx
               mov            N, %rax
-              divq           N1
+              div            %r13d
               mov            %rax, N2
               xor            k2, k2
 k2loop:       mov            $1, I

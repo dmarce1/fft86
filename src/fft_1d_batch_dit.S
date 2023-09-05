@@ -56,9 +56,9 @@ fft_1d_batch_dit:
               mov            %rbp, %rsp
               pop            %rbp
               ret
-next_level:   xor            %rdx, %rdx
+next_level:   xor            %edx, %edx
               mov            N, %rax
-              divq           N1
+              div            %r13d
               mov            %rax, N2
               mov            N1, %rax
               cmp            %rax, N
@@ -160,9 +160,8 @@ shuf4:        mov            %rdx, %rcx
               shl            %rcx
               add            %rax, %rcx
               vmovupd        (X, %rcx, 8), %ymm0
-              vmovupd        32(X, %rcx, 8), %ymm1
-              vperm2f128     $0x20, %ymm1, %ymm0, %ymm2
-              vperm2f128     $0x31, %ymm1, %ymm0, %ymm3
+              vperm2f128     $0x20, 32(X, %rcx, 8), %ymm0, %ymm2
+              vperm2f128     $0x31, 32(X, %rcx, 8), %ymm0, %ymm3
               vpermpd        $216, %ymm2, %ymm2
               vpermpd        $216, %ymm3, %ymm3
               vmovupd        %ymm2, (X, %rcx, 8)
