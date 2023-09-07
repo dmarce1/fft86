@@ -137,6 +137,6 @@ void transpose(std::complex<double>* X, int N, int NMID) {
 	int M = 1 << (std::ilogb(N - 1) + 1);
 	for (int imid = 0; imid < NMID; imid++) {
 		transpose_complex(X + imid * N, NMID * N, N, M);
-	//	transpose(X + imid * N, 0, 0, NMID * N, N, M);
+		//	transpose(X + imid * N, 0, 0, NMID * N, N, M);
 	}
 }

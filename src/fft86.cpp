@@ -159,7 +159,7 @@ void sort_nonsquare(double* X, int* N, int nN);
 void sort(double* X, double* Y, int N, int NLO = 1);
 
 int main() {
-	test(2*2*2*3*3*3*7*11*3*2);
+	test(2*2*5*5*7*3*3*3*7*2*2*2);
 	//feenableexcept(FE_DIVBYZERO);
 	//feenableexcept(FE_INVALID);
 //	feenableexcept(FE_OVERFLOW);

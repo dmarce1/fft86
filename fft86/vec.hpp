@@ -103,8 +103,8 @@ public:
 		Y2.v = _mm256_unpacklo_pd(X2.v, X3.v);
 		Y3.v = _mm256_unpackhi_pd(X2.v, X3.v);
 		X0.v = _mm256_permute2f128_pd(Y0.v, Y2.v, 0x20);
-		X1.v = _mm256_permute2f128_pd(Y0.v, Y2.v, 0x31);
-		X2.v = _mm256_permute2f128_pd(Y1.v, Y3.v, 0x20);
+		X1.v = _mm256_permute2f128_pd(Y1.v, Y3.v, 0x20);
+		X2.v = _mm256_permute2f128_pd(Y0.v, Y2.v, 0x31);
 		X3.v = _mm256_permute2f128_pd(Y1.v, Y3.v, 0x31);
 	}
 
