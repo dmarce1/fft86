@@ -14,9 +14,12 @@ set(fft86_source_files
 	./src/fourstep.cpp
 	./src/scramble.cpp
 	./src/scramble.S
+	./src/mixed.cpp
 	./src/transpose.cpp
 	./src/transpose.S
+	./src/transpose_prime.cpp
 	./src/twiddles.cpp
+	./src/pfa.cpp
 )      
 
 set(fft86_include_files

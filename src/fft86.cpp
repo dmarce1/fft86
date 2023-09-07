@@ -10,6 +10,7 @@
 #include <fft86/fft.hpp>
 #include <fft86/util.hpp>
 #include <fft86/defs.hpp>
+#include <fft86/timer.hpp>
 
 #include <algorithm>
 #include <complex>
@@ -18,17 +19,34 @@
 #include <cstdlib>
 #include <cstdio>
 
+void fft_pfa(std::complex<double>* X, int N1, int N2);
+
+void fft_complex(double* X, double* Y, int N);
+
 #define NTRIAL 101
 double test(int N) {
 	double err, t0 = 0, t1 = 0;
 	for (int n = 0; n < NTRIAL + 1; n++) {
 		std::vector<std::complex<double>> Z1(N), Z2(N);
+		std::vector<double> X(N), Y(N);
 		for (int n = 0; n < N; n++) {
 			Z1[n] = Z2[n] = std::complex<double>(rand1(), rand1());
 		}
-		//Z1[3] = Z2[3] = 1.0;
+		Z1[1] = Z2[1] = 1.0;
+		for (int n = 0; n < N; n++) {
+			X[n] = Z1[n].real();
+			Y[n] = Z1[n].imag();
+		}
 		t0 += fftw(Z2.data(), N);
-		t1 += fft_1d(Z1.data(), N);
+		timer tm;
+		tm.start();
+		fft_complex(X.data(), Y.data(), N);
+		tm.stop();
+		t1 += tm.read();
+		for (int n = 0; n < N; n++) {
+			Z1[n].real(X[n]);
+			Z1[n].imag(Y[n]);
+		}
 		if (n == 0) {
 			t1 = t0 = 0.0;
 		}
@@ -37,6 +55,39 @@ double test(int N) {
 			err += std::abs(Z1[n] - Z2[n]);
 		//	printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z1[n].real(), Z1[n].imag(), Z2[n].real(),
 		//			Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
+		}
+		err /= N;
+	//	abort();
+	}
+	printf("%20i %20e %20e %20e %20f\n", N, err, t0, t1, t0 / (1.0e-10 + t1));
+	return t1;
+}
+
+void fft_prime_factor_algorithm(double* X, const std::vector<int>& N);
+
+double test_pfa(std::vector<int> Ns) {
+	int N = std::reduce(Ns.begin(), Ns.end(), 1, std::multiplies<int>());
+	double err, t0 = 0, t1 = 0;
+	for (int n = 0; n < NTRIAL + 1; n++) {
+		std::vector<std::complex<double>> Z1(N), Z2(N);
+		for (int n = 0; n < N; n++) {
+			Z1[n] = Z2[n] = std::complex<double>(rand1(), rand1());
+		}
+		Z1[0] = Z2[0] = 1.0;
+		t0 += fftw(Z2.data(), N);
+		timer tm;
+		tm.start();
+		fft_prime_factor_algorithm((double*) Z1.data(), Ns);
+		tm.stop();
+		t1 += tm.read();
+		if (n == 0) {
+			t1 = t0 = 0.0;
+		}
+		err = 0.0;
+		for (int n = 0; n < N; n++) {
+			err += std::abs(Z1[n] - Z2[n]);
+			//	printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z1[n].real(), Z1[n].imag(), Z2[n].real(),
+			//			Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
 		}
 		err /= N;
 		//abort();
@@ -85,54 +136,32 @@ bool usenum(int N) {
 
 #include <fenv.h>
 
+void test2(int N1, int N2) {
+	int n1 = 1;
+	std::vector<bool> visited(N1, false);
+	for (int n1 = 0; n1 < N1; n1++) {
+		if (!visited[n1]) {
+			printf("\n");
+			int n = n1;
+			do {
+				int next = (n * N2) % N1;
+				printf("%i %i\n", n, next);
+				n = next;
+				visited[n] = true;
+			} while (n != n1);
+		}
+	}
+}
+
+std::vector<std::pair<int, int>> compute_factors(int N);
+
+void sort_nonsquare(double* X, int* N, int nN);
+void sort(double* X, double* Y, int N, int NLO = 1);
+
 int main() {
+	test(2*2*2*3*3*3*7*11*3*2);
 	//feenableexcept(FE_DIVBYZERO);
 	//feenableexcept(FE_INVALID);
 //	feenableexcept(FE_OVERFLOW);
-//	return 0;
-#define NMAX (1024*1024)
-	std::vector<int> nums;
-	int R = 4;
-	int N = R * R;
-	while (N < NMAX) {
-		nums.push_back(N);
-		N *= R;
-	}
-	R = 5;
-	N = R * R;
-	while (N < NMAX) {
-		nums.push_back(N);
-		N *= R;
-	}
-	R = 7;
-	N = R * R;
-	while (N < NMAX) {
-		nums.push_back(N);
-		N *= R;
-	}
-	R = 9;
-	N = R * R;
-	while (N < NMAX) {
-		nums.push_back(N);
-		N *= R;
-	}
-	R = 11;
-	N = R * R;
-	while (N < NMAX) {
-		nums.push_back(N);
-		N *= R;
-	}
-	R = 13;
-	N = R * R;
-	while (N < NMAX) {
-		nums.push_back(N);
-		N *= R;
-	}
-
-	std::sort(nums.begin(), nums.end());
-	double tm = 0.0;
-	for (auto nm : nums) {
-		test(nm);
-	}
 	return 0;
 }

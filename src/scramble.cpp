@@ -44,8 +44,6 @@ void scramble_hi(double* X, int R, int NHI, int NLO) {
 	}
 }*/
 
-extern "C" void scramble_hi(std::complex<double>* X, int R, int NHI, int NLO);
-
 
 void scramble(double* X, int R, int N) {
 	int N1 = N;
