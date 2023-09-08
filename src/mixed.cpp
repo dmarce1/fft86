@@ -195,14 +195,6 @@ void fft_sort(double* X, double* Y, int* Nhead, int* Ntail, int N, int NLO = 1) 
 		if (NLO == 1) {
 			scramble_hi(X, R, N1, N / N1);
 			scramble_hi(Y, R, N1, N / N1);
-			/*for( int n1 = 0; n1 < N1; n1++) {
-			 for( int n2 = 0; n2 < N / N1 / N1; n2++) {
-			 for( int n3 = n1 + 1; n3 < N1; n3++) {
-			 std::swap(X[n3 + N1 * (n2 + N/N1/N1 * n1)], X[n1 + N1 * (n2 + N/N1/N1 * n3)]);
-			 std::swap(Y[n3 + N1 * (n2 + N/N1/N1 * n1)], Y[n1 + N1 * (n2 + N/N1/N1 * n3)]);
-			 }
-			 }
-			 }*/
 			transpose(X, N1, N / (N1 * N1));
 			transpose(Y, N1, N / (N1 * N1));
 			scramble_hi(X, R, N1, N / N1);
@@ -255,10 +247,6 @@ void fft_sort(double* X, double* Y, int* Nhead, int* Ntail, int N, int NLO = 1) 
 		int* beg = Nhead;
 		int* end = Ntail;
 		static thread_local std::vector<bool> visited;
-		static thread_local std::vector<double> tmpx;
-		static thread_local std::vector<double> tmpy;
-		tmpx.resize(NLO);
-		tmpy.resize(NLO);
 		N /= NLO;
 		visited.resize(N);
 		std::fill(visited.begin(), visited.end(), false);
@@ -275,17 +263,13 @@ void fft_sort(double* X, double* Y, int* Nhead, int* Ntail, int N, int NLO = 1) 
 						next += k % *n;
 						k /= *n;
 					}
-					if (current == n) {
+					if (next != n) {
 						for (int m = 0; m < NLO; m++) {
-							const int j = m + NLO * current;
-							tmpx[m] = X[j];
-							tmpy[m] = Y[j];
+							const int i = m + NLO * next;
+							const int j = m + NLO * n;
+							std::swap(X[j], X[i]);
+							std::swap(Y[j], Y[i]);
 						}
-					}
-					for (int m = 0; m < NLO; m++) {
-						const int i = m + NLO * next;
-						std::swap(tmpx[m], X[i]);
-						std::swap(tmpy[m], Y[i]);
 					}
 					visited[next] = true;
 				} while (next != n);
@@ -324,12 +308,6 @@ void fft_dif(double* X, double* Y, int N, int* Rptr, int M) {
 		for (int n1 = 1; n1 < N1; n1++) {
 			w[2 * n1] = W0[n1 * n2].real();
 			w[2 * n1 + 1] = W0[n1 * n2].imag();
-		}
-		for (int n1 = 1; n1 < N1; n1++) {
-			for (int l = 0; l < 4; l++) {
-				w[4 * n1 + l] = W0[n1 * n2].real();
-				w[4 * n1 + l + 4] = W0[n1 * n2].imag();
-			}
 		}
 		for (; m < M; m++) {
 			sfft_complex_dif_w1(X + m + M * n2, Y + m + M * n2, s, N1, w.data());
@@ -377,12 +355,6 @@ void fft_dit(double* X, double* Y, int N, int* Rptr, int M) {
 		for (int n1 = 1; n1 < N1; n1++) {
 			w[2 * n1] = W0[n1 * k2].real();
 			w[2 * n1 + 1] = W0[n1 * k2].imag();
-		}
-		for (int n1 = 1; n1 < N1; n1++) {
-			for (int l = 0; l < 4; l++) {
-				w[4 * n1 + l] = W0[n1 * k2].real();
-				w[4 * n1 + l + 4] = W0[n1 * k2].imag();
-			}
 		}
 		for (; m < M; m++) {
 			sfft_complex_dit_w1(X + m + M * k2, Y + m + M * k2, s, N1, w.data());
