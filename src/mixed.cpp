@@ -175,6 +175,7 @@ void scramble_hi(double* X, int R, int N1, int NLO) {
 }
 
 void fft_sort(double* X, double* Y, int* Nhead, int* Ntail, int N, int NLO = 1) {
+	static thread_local std::vector<bool> visited;
 	if (Nhead >= Ntail) {
 		return;
 	}
@@ -246,34 +247,39 @@ void fft_sort(double* X, double* Y, int* Nhead, int* Ntail, int N, int NLO = 1) 
 	} else {
 		int* beg = Nhead;
 		int* end = Ntail;
-		static thread_local std::vector<bool> visited;
-		N /= NLO;
-		visited.resize(N);
-		std::fill(visited.begin(), visited.end(), false);
-		for (int n = 0; n < N; n++) {
-			if (!visited[n]) {
-				int current;
-				int next = n;
-				do {
-					current = next;
-					next = 0;
-					int k = current;
-					for (auto* n = end; n >= beg; n--) {
-						next *= *n;
-						next += k % *n;
-						k /= *n;
-					}
-					if (next != n) {
-						for (int m = 0; m < NLO; m++) {
-							const int i = m + NLO * next;
-							const int j = m + NLO * n;
-							std::swap(X[j], X[i]);
-							std::swap(Y[j], Y[i]);
-						}
-					}
-					visited[next] = true;
-				} while (next != n);
+		while (beg != end) {
+			int N0 = N / NLO;
+			visited.resize(N0);
+			std::fill(visited.begin(), visited.end(), false);
+			int N2 = 1;
+			int N1 = *beg;
+			for (auto i = beg + 1; i <= end; i++) {
+				N2 *= *i;
 			}
+			const int NNm1 = N1 * N2 - 1;
+			for (int n = 1; n < NNm1; n++) {
+				if (!visited[n]) {
+					int current;
+					int next = n;
+					const int j0 = NLO * n;
+					do {
+						current = next;
+						next = (current * N1) % NNm1;
+						visited[next] = true;
+						if (next != n) {
+							const int i0 = NLO * next;
+							for (int m = 0; m < NLO; m++) {
+								const int i = m + i0;
+								const int j = m + j0;
+								std::swap(X[j], X[i]);
+								std::swap(Y[j], Y[i]);
+							}
+						}
+					} while (next != n);
+				}
+			}
+			beg++;
+			NLO *= N1;
 		}
 	}
 }
@@ -451,6 +457,8 @@ void fft_complex(double* X, double* Y, int N) {
 	if (M % 3 == 0) {
 		odds.push_back(3);
 	}
+//	std::reverse(evens.begin(), evens.end());
+	//std::reverse(odds.begin(), odds.end());
 	N1s = evens;
 	M = std::reduce(odds.begin(), odds.end(), 1, std::multiplies<int>());
 	int i = 0;
@@ -470,7 +478,7 @@ void fft_complex(double* X, double* Y, int N) {
 	const int N1 = std::reduce(N1s.begin(), N1s.end(), 1, std::multiplies<int>());
 	std::vector<int> Ns = N1s;
 	Ns.insert(Ns.end(), N2s.begin(), N2s.end());
-	printf("N1 = ");
+/*	printf("N1 = ");
 	for (int n = 0; n < N1s.size(); n++) {
 		printf("(%i)", N1s[n]);
 	}
@@ -479,7 +487,7 @@ void fft_complex(double* X, double* Y, int N) {
 	for (int n = 0; n < N2s.size(); n++) {
 		printf("(%i)", N2s[n]);
 	}
-	printf("\n");
+	printf("\n");*/
 	tm1.stop();
 	tm2.start();
 	fft_dif(X, Y, N1, N1s.data(), N2);
@@ -496,8 +504,8 @@ void fft_complex(double* X, double* Y, int N) {
 	fft_dit(X, Y, N2, N2s.data(), N1);
 	tm5.stop();
 	const double tinv = 100.0 / (tm1.read() + tm2.read() + tm3.read() + tm4.read() + tm5.read());
-	printf("%e %e %e %e %e\n", tm1.read() * tinv, tm2.read() * tinv, tm3.read() * tinv, tm4.read() * tinv,
-			tm5.read() * tinv);
+//	printf("%e %e %e %e %e\n", tm1.read() * tinv, tm2.read() * tinv, tm3.read() * tinv, tm4.read() * tinv,
+//			tm5.read() * tinv);
 
 }
 

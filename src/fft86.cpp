@@ -53,13 +53,34 @@ double test(int N) {
 		err = 0.0;
 		for (int n = 0; n < N; n++) {
 			err += std::abs(Z1[n] - Z2[n]);
-		//	printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z1[n].real(), Z1[n].imag(), Z2[n].real(),
-		//			Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
+			//		printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z1[n].real(), Z1[n].imag(), Z2[n].real(),
+			//				Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
 		}
 		err /= N;
-	//	abort();
+		//	abort();
 	}
-	printf("%20i %20e %20e %20e %20f\n", N, err, t0, t1, t0 / (1.0e-10 + t1));
+	printf("%20i %20e %20e %20e %20f - ", N, err, t0, t1, t0 / (1.0e-10 + t1));
+	int M = N;
+	int n = 2;
+	while (M > 1) {
+		for (; n <= M; n++) {
+			if (M % n == 0) {
+				printf("%i", n);
+				int cnt = 0;
+				while (M % n == 0) {
+					M /= n;
+					cnt++;
+				}
+				if (cnt > 1) {
+					printf("^%i", cnt);
+				}
+				if (M != 1) {
+					printf("*");
+				}
+			}
+		}
+	}
+	printf("\n");
 	return t1;
 }
 
@@ -159,7 +180,24 @@ void sort_nonsquare(double* X, int* N, int nN);
 void sort(double* X, double* Y, int N, int NLO = 1);
 
 int main() {
-	test(2*2*14*13*17*19);
+	for (int N = 65536; N < 1024 * 1024 * 1024; N++) {
+		int M = N;
+		int nfac = 0;
+		int facmax;
+		for (int n = 4; n <= N; n++) {
+			while (M % n == 0) {
+				facmax = n;
+				M /= n;
+				nfac++;
+			}
+		}
+		if (facmax <= 32 && nfac >= 2) {
+			test(N);
+			N *= 11;
+			N /= 10;
+			N--;
+		}
+	}
 	//feenableexcept(FE_DIVBYZERO);
 	//feenableexcept(FE_INVALID);
 //	feenableexcept(FE_OVERFLOW);
