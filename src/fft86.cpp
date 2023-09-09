@@ -308,8 +308,8 @@ void dct3(double* Y, int N) {
 	std::vector<std::complex<double>> Z(N / 2 + 1);
 	std::vector<double> X(N);
 	Z[0] = Y[0];
-	Z[N / 2] = Y[N / 2];
-	for (int n = 1; n < N / 2; n++) {
+	Z[N / 2] = sqrt(0.5)*Y[N / 2];
+	for (int n = 1; n < (N+1) / 2; n++) {
 		Z[n] = 0.5 * (Y[n] - std::complex<double>(0, 1) * Y[N - n]) * std::polar(1.0, M_PI * 0.5 * n / N);
 	}
 	fftw_inv_real(Z, X);
@@ -422,13 +422,13 @@ void fft_skew2(double* X, int N) {
 }
 
 int main() {
-	int N = 35;
+	int N = 16;
 	std::vector<double> X(N);
 	std::vector<double> Y(N);
 	for (int n = 0; n < N; n++) {
-		X[n] = 0;
+		X[n] = rand1();
 	}
-	X[1] = 1.0;
+	X[2] = 1.0;
 	for (int n = 0; n < N; n++) {
 		Y[n] = X[n];
 	}
