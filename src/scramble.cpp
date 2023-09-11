@@ -8,6 +8,29 @@
 #include <map>
 #include <unordered_map>
 
+void scramble_hi(double* X, int R, int N1, int NLO) {
+	int nr = 0;
+	int Rm1 = R - 1;
+	for (int n1 = 0; n1 < N1; n1++) {
+		if (n1 < nr) {
+			for (int n2 = 0; n2 < NLO; n2++) {
+				std::swap(X[n2 + NLO * n1], X[n2 + NLO * nr]);
+			}
+		}
+		if (n1 != N1 - 1) {
+			int k = N1 / R;
+			nr++;
+			while (Rm1 * k < nr) {
+				nr -= Rm1 * k;
+				k /= R;
+			}
+			nr += k - 1;
+		}
+
+	}
+
+}
+
 const std::vector<int>& get_digit_reversal(int R, int N) {
 	static thread_local std::unordered_map<int, std::map<int, std::vector<int>>>values;
 	auto iter = values[R].find(N);

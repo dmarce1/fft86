@@ -12,6 +12,7 @@
 #include <fft86/defs.hpp>
 #include <fft86/timer.hpp>
 #include <fft86/scramble.hpp>
+#include <fft86/twiddles.hpp>
 
 #include <algorithm>
 #include <complex>
@@ -86,37 +87,6 @@ double test(int N) {
 }
 
 void fft_prime_factor_algorithm(double* X, const std::vector<int>& N);
-
-double test_pfa(std::vector<int> Ns) {
-	int N = std::reduce(Ns.begin(), Ns.end(), 1, std::multiplies<int>());
-	double err, t0 = 0, t1 = 0;
-	for (int n = 0; n < NTRIAL + 1; n++) {
-		std::vector<std::complex<double>> Z1(N), Z2(N);
-		for (int n = 0; n < N; n++) {
-			Z1[n] = Z2[n] = std::complex<double>(rand1(), rand1());
-		}
-		Z1[0] = Z2[0] = 1.0;
-		t0 += fftw(Z2.data(), N);
-		timer tm;
-		tm.start();
-		fft_prime_factor_algorithm((double*) Z1.data(), Ns);
-		tm.stop();
-		t1 += tm.read();
-		if (n == 0) {
-			t1 = t0 = 0.0;
-		}
-		err = 0.0;
-		for (int n = 0; n < N; n++) {
-			err += std::abs(Z1[n] - Z2[n]);
-			//	printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z1[n].real(), Z1[n].imag(), Z2[n].real(),
-			//			Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
-		}
-		err /= N;
-		//abort();
-	}
-	printf("%20i %20e %20e %20e %20f\n", N, err, t0, t1, t0 / (1.0e-10 + t1));
-	return t1;
-}
 
 void * operator new(std::size_t n) {
 	void* memptr;
@@ -304,30 +274,105 @@ double fftw_inv_real(const std::vector<std::complex<double>>& xin, std::vector<d
 	return tm.read();
 }
 
-void dct3(double* Y, int N) {
+void dst3(double* Y, int N) {
+
 	std::vector<std::complex<double>> Z(N / 2 + 1);
 	std::vector<double> X(N);
-	Z[0] = Y[0];
-	Z[N / 2] = sqrt(0.5)*Y[N / 2];
-	for (int n = 1; n < (N+1) / 2; n++) {
-		Z[n] = 0.5 * (Y[n] - std::complex<double>(0, 1) * Y[N - n]) * std::polar(1.0, M_PI * 0.5 * n / N);
+	X[0] = Y[0];
+	X[N / 2] = sqrt(0.5) * Y[N / 2];
+	for (int n = 1; n < N - n; n++) {
+		const double c = cos(0.5 * M_PI * n / N);
+		const double s = sin(0.5 * M_PI * n / N);
+		X[N - n] = 0.5 * (Y[N - n] * (c - s) + Y[n] * (s + c));
+		X[n] = 0.5 * (Y[N - n] * (c + s) + Y[n] * (s - c));
 	}
-	fftw_inv_real(Z, X);
-	for (int n = 0; n <= N / 2; n++) {
-		Y[2 * n] = X[n];
-		Y[2 * n + 1] = X[N - n - 1];
+	fftw_real(X, Z);
+	Y[0] = Z[0].real();
+	Y[N / 2] = Z[N / 2].real();
+	for (int n = 1; n <= N / 2; n++) {
+		Y[2 * n] = Z[n].real() + Z[n].imag();
+		Y[2 * n - 1] = Z[n].imag() - Z[n].real();
 	}
 }
 
-void dst3(double* X, int N) {
-	std::vector<double> Y(N);
-	for (int k = 1; k < N - k; k++) {
-		std::swap(X[k], X[N - k]);
+void dct3(double* Y, int N) {
+	std::vector<std::complex<double>> Z(N / 2 + 1);
+	std::vector<double> X(N);
+	X[0] = Y[0];
+	X[N / 2] = sqrt(0.5) * Y[N / 2];
+	for (int n = 1; n < N - n; n++) {
+		const double c = cos(0.5 * M_PI * n / N);
+		const double s = sin(0.5 * M_PI * n / N);
+		X[n] = 0.5 * (Y[n] * (c + s) + Y[N - n] * (s - c));
+		X[N - n] = 0.5 * (Y[n] * (c - s) + Y[N - n] * (s + c));
 	}
-	dct3(X, N);
-	for (int k = 1; k < N; k += 2) {
-		X[k] = -X[k];
+	fftw_real(X, Z);
+	Y[0] = Z[0].real();
+	Y[N / 2] = Z[N / 2].real();
+	for (int n = 1; n <= N / 2; n++) {
+		Y[2 * n] = Z[n].real() + Z[n].imag();
+		Y[2 * n - 1] = Z[n].real() - Z[n].imag();
 	}
+}
+
+#include <cstring>
+
+void fft_skew2(double* x, int N) {
+	std::vector<double> X(x, x + N);
+	if (N % 2 == 0) {
+		std::vector<std::complex<double>> Z(N / 2 + 1);
+		const auto* W2 = get_twiddles(2 * N);
+		double T1 = 0.0, T2 = 0.0;
+		for (int n = 0; n < N / 2; n++) {
+			T1 += X[2 * n] * W2[2 * n].real();
+			T2 += X[2 * n + 1] * W2[2 * n + 1].real();
+		}
+		for (int n = 0; n < N; n++) {
+			X[n] *= -2.0 * W2[n].imag();
+		}
+		printf("%e %e\n", T1, T2);
+		fftw_real(X, Z);
+		for (int n = 1; n < N / 2; n++) {
+			X[n] = Z[n].real();
+			X[N - n] = Z[n].imag();
+		}
+		X[0] = Z[0].real();
+		X[N / 2] = Z[N / 2].real();
+
+		double T3 = X[N - 1];
+		X[N - 1] = -0.5 * X[0];
+		X[0] = T1 + T2;
+		double T4;
+		for (int k1 = 1; k1 < N / 2 - 1; k1++) {
+			T4 = X[N - k1 - 1];
+			X[N - k1 - 1] = -X[k1] + X[N - k1];
+			X[k1] = T3 + X[k1 - 1];
+			T3 = T4;
+		}
+		X[N / 2] = 0.5 * X[N / 2];
+		X[N / 2 - 1] = T1 - T2;
+	} else {
+		std::vector<double> y(N);
+		const int dn = N / 2;
+		for (int n = 0; n < N; n++) {
+			y[n] = X[n];
+			y[n] *= std::pow(-1, n);
+		}
+		std::vector<std::complex<double>> z((N + 1) / 2);
+		fftw_real(y, z);
+		std::complex<double> z0(0.0, 0.0);
+		for (int n = 0; n < N; n++) {
+			z0 += X[n] * std::polar(1.0, -M_PI * n / N);
+		}
+		for (int n = 0; n < N / 2; n++) {
+			X[N / 2 - n] = z[(n + dn) % (N / 2)].real();
+			X[N / 2 + n] = -z[(n + dn) % (N / 2)].imag();
+		}
+		X[0] = z0.real();
+		X[N - 1] = z0.imag();
+		X[N / 2] = z[0].real();
+	}
+	std::memcpy(x, X.data(), sizeof(double) * N);
 }
 
 void fft_skew1(double* X, int N) {
@@ -382,44 +427,6 @@ void dft(double* X, int N) {
 }
 
 #include <sfft.hpp>
-
-void fft_skew2(double* X, int N) {
-	if (N % 2 == 0) {
-		std::vector<double> xp(N);
-		std::vector<double> xm(N);
-		for (int n = 0; n < N / 2; n++) {
-			xp[n] = n == 0 ? X[0] : (X[n] - X[(N - n) % N]);
-			xm[n] = n == 0 ? 0.0 : -(X[n] + X[(N - n) % N]);
-		}
-		dct3(xp.data(), N / 2);
-		dst3(xm.data(), N / 2);
-		const double xny = X[N / 2];
-		for (int n = 0; n < N / 2; n++) {
-			X[n] = xp[n];
-			X[N - n - 1] = xm[n] - std::pow(-1, n) * xny;
-		}
-	} else {
-		std::vector<double> y(N);
-		const int dn = N / 2;
-		for (int n = 0; n < N; n++) {
-			y[n] = X[n];
-			y[n] *= std::pow(-1, n);
-		}
-		std::vector<std::complex<double>> z((N + 1) / 2);
-		fftw_real(y, z);
-		std::complex<double> z0(0.0, 0.0);
-		for (int n = 0; n < N; n++) {
-			z0 += X[n] * std::polar(1.0, -M_PI * n / N);
-		}
-		for (int n = 0; n < N / 2; n++) {
-			X[N / 2 - n] = z[(n + dn) % (N / 2)].real();
-			X[N / 2 + n] = -z[(n + dn) % (N / 2)].imag();
-		}
-		X[0] = z0.real();
-		X[N - 1] = z0.imag();
-		X[N / 2] = z[0].real();
-	}
-}
 
 int main() {
 	int N = 16;

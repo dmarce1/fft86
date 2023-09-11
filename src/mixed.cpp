@@ -14,165 +14,6 @@
 #include <vector>
 #include <sfft.hpp>
 
-void fft_prime_factor_algorithm(double* X, const std::vector<int>& N) {
-	std::vector<int> M(N.size());
-	std::vector<int> L(N.size());
-	int N0 = 1;
-	for (int n = 0; n < N.size(); n++) {
-		L[n] = N0;
-		N0 *= N[n];
-	}
-	std::vector<double> Y(2 * N0);
-	for (int n = 0; n < M.size(); n++) {
-		M[n] = N0 / N[n];
-	}
-	std::vector<bool> visited(2 * N0, false);
-	for (int n0 = 0; n0 < 2 * N0; n0++) {
-		if (!visited[n0]) {
-			int n = n0;
-			int next;
-			do {
-				int p = n >> 1;
-				for (int m = 0; m < N.size(); m++) {
-					int d = p % N[m];
-					p /= N[m];
-					next += d * M[m];
-				}
-				next = next % N0;
-				if (n & 1) {
-					next += N0;
-				}
-				visited[next] = true;
-				std::swap(X[n], X[next]);
-				n = next;
-			} while (next != n0);
-		}
-	}
-	for (int i = 0; i < N.size(); i++) {
-		int n1 = L[i];
-		int o2 = L[i] * N[i];
-		int n2 = N0 / L[i] / N[i];
-		for (int j2 = 0; j2 < n2; j2++) {
-			int j1 = 0;
-			for (; j1 < n1 - 3; j1 += 4) {
-				double* x = X + (o2 * j2 + j1);
-				double* y = x + N0;
-				sfft_complex_w4(x, y, L[i], N[i]);
-			}
-			for (; j1 < n1 - 1; j1 += 2) {
-				double* x = X + (o2 * j2 + j1);
-				double* y = x + N0;
-				sfft_complex_w2(x, y, L[i], N[i]);
-			}
-			for (; j1 < n1; j1++) {
-				double* x = X + (o2 * j2 + j1);
-				double* y = x + N0;
-				sfft_complex_w1(x, y, L[i], N[i]);
-			}
-		}
-	}
-	std::fill(visited.begin(), visited.end(), false);
-	for (int n0 = 0; n0 < 2 * N0; n0++) {
-		if (!visited[n0]) {
-			int n = n0;
-			int next;
-			do {
-				int next = 0;
-				for (int m = 0; m < N.size(); m++) {
-					next += L[m] * ((n >> 1) % N[m]);
-				}
-				visited[next] = true;
-				std::swap(X[n], X[next]);
-				n = next;
-			} while (next != n0);
-		}
-	}
-
-}
-
-std::vector<std::pair<int, int>> compute_factors(int N) {
-	int M = N;
-	std::vector<int> p;
-	std::vector<std::pair<int, int>> f;
-	std::vector<std::pair<int, int>> factors;
-	while (M > 1) {
-		for (int m = 2; m <= M; m++) {
-			if (M % m == 0) {
-				int q = 0;
-				do {
-					q++;
-					M /= m;
-				} while (M % m == 0);
-				if (q & 1) {
-					p.push_back(m);
-					q--;
-				}
-				if (q) {
-					f.push_back(std::make_pair(m, q));
-				}
-			}
-		}
-	}
-	for (auto fac : f) {
-		factors.push_back(std::make_pair(fac.first, fac.second >> 1));
-	}
-	for (auto prm : p) {
-		factors.push_back(std::make_pair(prm, 1));
-	}
-	std::reverse(f.begin(), f.end());
-	for (auto fac : f) {
-		factors.push_back(std::make_pair(fac.first, fac.second >> 1));
-	}
-	return std::move(factors);
-}
-
-void sort_mixed_radix(std::complex<double>* X, int N) {
-	auto facs = compute_factors(N);
-//	sort_mixed_radix(X, N, facs);
-
-}
-
-void sort_nonsquare(double* X, int* N, int nfacs, int NLO) {
-	const int N0 = std::reduce(N, N + nfacs, 1, std::multiplies<int>());
-	int next;
-	int current = 1;
-	do {
-		int k = current;
-		next = 0;
-		for (int l = 0; l < nfacs; l++) {
-			next *= N[l];
-			next += k % N[l];
-			k /= N[l];
-		}
-		for (int m = 0; m < NLO; m++) {
-			std::swap(X[NLO * current + m], X[NLO * next + m]);
-		}
-		current = next;
-	} while (next != 1);
-}
-
-void scramble_hi(double* X, int R, int N1, int NLO) {
-	int nr = 0;
-	int Rm1 = R - 1;
-	for (int n1 = 0; n1 < N1; n1++) {
-		if (n1 < nr) {
-			for (int n2 = 0; n2 < NLO; n2++) {
-				std::swap(X[n2 + NLO * n1], X[n2 + NLO * nr]);
-			}
-		}
-		if (n1 != N1 - 1) {
-			int k = N1 / R;
-			nr++;
-			while (Rm1 * k < nr) {
-				nr -= Rm1 * k;
-				k /= R;
-			}
-			nr += k - 1;
-		}
-
-	}
-
-}
 
 void fft_sort(double* X, double* Y, int* Nhead, int* Ntail, int N, int NLO = 1) {
 	static thread_local std::vector<bool> visited;
@@ -284,7 +125,7 @@ void fft_sort(double* X, double* Y, int* Nhead, int* Ntail, int N, int NLO = 1) 
 	}
 }
 
-void fft_dif(double* X, double* Y, int N, int* Rptr, int M) {
+void fft_complex_dif(double* X, double* Y, int N, int* Rptr, int M) {
 	const auto* W0 = get_twiddles(N);
 	static thread_local std::vector<double> w;
 	const int N1 = *Rptr;
@@ -321,12 +162,122 @@ void fft_dif(double* X, double* Y, int N, int* Rptr, int M) {
 	}
 	if (N2 > 1) {
 		for (int k1 = 0; k1 < N1; k1++) {
-			fft_dif(X + k1 * s, Y + k1 * s, N2, Rptr + 1, M);
+			fft_complex_dif(X + k1 * s, Y + k1 * s, N2, Rptr + 1, M);
 		}
 	}
 }
 
-void fft_dit(double* X, double* Y, int N, int* Rptr, int M) {
+void fft_real_dif(double* X, int N, int* Rptr, int M);
+
+void fft_skew_dif(double* X, int N, int* Rptr, int M) {
+	/*const auto* W2 = get_twiddles(2 * N);
+	if (N % 2 == 0) {
+		bool is2;
+		const double xny = X[N / 2];
+		X[N / 2] = 0.0;
+		double* xp = X;
+		double* xm = X + N / 2;
+		for (int n = 1; n < N; n++) {
+			auto tmp = X[n];
+			X[n] = tmp - X[N - n];
+			X[N - n] = -tmp - X[N - n];
+		}
+		if ((N / 2) % 2 == 0) {
+			xp[N / 4] *= sqrt(0.5);
+			xm[N / 4] *= sqrt(0.5);
+		}
+		for (int n = 1; n < N / 2 - n; n++) {
+			const double c = W2[2 * N - n].real();
+			const double s = W2[2 * N - n].imag();
+			auto tmpp = xp[n];
+			xp[n] = 0.5 * (tmpp * (c + s) + xp[N / 2 - n] * (s - c));
+			xp[N / 2 - n] = 0.5 * (tmpp * (c - s) + xp[N / 2 - n] * (s + c));
+			auto tmpm = xm[n];
+			xm[n] = 0.5 * (tmpm * (c + s) + xm[N / 2 - n] * (s - c));
+			xm[N / 2 - n] = 0.5 * (tmpm * (c - s) + xm[N / 2 - n] * (s + c));
+		}
+		const bool is2 = (*Rptr == 2);
+		if (is2) {
+			Rptr++;
+		} else {
+			*Rptr >>= 1;
+		}
+		fft_real_dif(xp, N / 2, Rptr, M);
+		if (!is2) {
+			*Rptr <<= 1;
+		}
+		const int d = 1 - 2 * (N % 2);
+		for (int n = 1; n < (N + 2) / 4; n++) {
+			auto tmpp = xp[2 * n];
+			auto tmpm = xm[2 * n];
+			xp[2 * n] = tmpp + xp[2 * n + d];
+			xm[2 * n] = tmpm + xm[2 * n + d];
+			xp[2 * n + d] = tmpp - xp[2 * n + d];
+			xm[2 * n + d] = tmpm - xm[2 * n + d];
+		}
+		for (int n = 1; n < (N + 2) / 4; n++) {
+			X[2 * n + d] = std::pow(-1, n / 2) * (X[2 * n + d] - xny);
+		}
+	} else {
+		const int dn = N / 2;
+		for (int n = 1; n < N; n += 2) {
+			X[n] = -X[n];
+		}
+		fft_real_dif(X, N, Rptr, M);
+		std::complex<double> z0(0.0, 0.0);
+		for (int n = 0; n < N; n++) {
+			//X[n] *= W2[n];
+		}
+		int n = 0;
+		do {
+			int l = n;
+			n += (N - 1) / 2;
+			n %= N;
+			std::swap(X[n], X[l]);
+		} while (n != 0);
+		for (int n = 0; n < N / 2; n++) {
+			X[2 * n + 1] = -X[2 * n + 1];
+		}
+		for (int n = 1; n < N / 2; n++) {
+			std::swap(X[N - n], X[n]);
+		}
+		X[0] = z0.real();
+		X[1] = z0.imag();
+	}*/
+}
+
+void fft_real_dif(double* X, int N, int* Rptr, int M) {
+	const int N1 = *Rptr;
+	const int N2 = N / N1;
+	const int s = N2 * M;
+	for (int n2 = 0; n2 < N2; n2++) {
+		int m = 0;
+		for (; m < M - 3; m += 4) {
+			sfft_real_w4(X + m + M * n2, s, N1);
+		}
+		for (; m < M - 1; m += 2) {
+			sfft_real_w2(X + m + M * n2, s, N1);
+		}
+		for (; m < M; m++) {
+			sfft_real_w1(X + m + M * n2, s, N1);
+		}
+	}
+	if (N2 > 1) {
+		fft_real_dif(X, N2, Rptr + 1, M);
+		if (N1 % 2 == 0) {
+			fft_skew_dif(X, N2, Rptr + 1, M);
+		}
+		const int ks = 2 - (N1 % 2);
+		const int dk = 1 - (N1 % 2);
+		for (int k1 = ks; k1 < N1; k1++) {
+			auto* x = X + k1 * s;
+			auto* y = X + (N1 - k1 + dk) * s;
+			fft_complex_dif(x, y, N2, Rptr + 1, M);
+		}
+	}
+}
+
+void fft_complex_dit(double* X, double* Y, int N, int* Rptr, int M) {
 	const auto* W0 = get_twiddles(N);
 	static thread_local std::vector<double> w;
 	const int N1 = *Rptr;
@@ -335,7 +286,7 @@ void fft_dit(double* X, double* Y, int N, int* Rptr, int M) {
 	w.resize(8 * N1);
 	if (N2 > 1) {
 		for (int n1 = 0; n1 < N1; n1++) {
-			fft_dit(X + n1 * s, Y + n1 * s, N2, Rptr + 1, M);
+			fft_complex_dit(X + n1 * s, Y + n1 * s, N2, Rptr + 1, M);
 		}
 	}
 	for (int k2 = 0; k2 < N2; k2++) {
@@ -478,19 +429,19 @@ void fft_complex(double* X, double* Y, int N) {
 	const int N1 = std::reduce(N1s.begin(), N1s.end(), 1, std::multiplies<int>());
 	std::vector<int> Ns = N1s;
 	Ns.insert(Ns.end(), N2s.begin(), N2s.end());
-/*	printf("N1 = ");
-	for (int n = 0; n < N1s.size(); n++) {
-		printf("(%i)", N1s[n]);
-	}
-	printf("\n");
-	printf("N2 = ");
-	for (int n = 0; n < N2s.size(); n++) {
-		printf("(%i)", N2s[n]);
-	}
-	printf("\n");*/
+	/*	printf("N1 = ");
+	 for (int n = 0; n < N1s.size(); n++) {
+	 printf("(%i)", N1s[n]);
+	 }
+	 printf("\n");
+	 printf("N2 = ");
+	 for (int n = 0; n < N2s.size(); n++) {
+	 printf("(%i)", N2s[n]);
+	 }
+	 printf("\n");*/
 	tm1.stop();
 	tm2.start();
-	fft_dif(X, Y, N1, N1s.data(), N2);
+	fft_complex_dif(X, Y, N1, N1s.data(), N2);
 	tm2.stop();
 	std::reverse(N1s.begin(), N1s.end());
 	tm3.start();
@@ -501,7 +452,7 @@ void fft_complex(double* X, double* Y, int N) {
 	tm4.stop();
 	std::reverse(N2s.begin(), N2s.end());
 	tm5.start();
-	fft_dit(X, Y, N2, N2s.data(), N1);
+	fft_complex_dit(X, Y, N2, N2s.data(), N1);
 	tm5.stop();
 	const double tinv = 100.0 / (tm1.read() + tm2.read() + tm3.read() + tm4.read() + tm5.read());
 //	printf("%e %e %e %e %e\n", tm1.read() * tinv, tm2.read() * tinv, tm3.read() * tinv, tm4.read() * tinv,

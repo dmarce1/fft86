@@ -15,6 +15,7 @@ set(fft86_source_files
 	./src/scramble.cpp
 	./src/scramble.S
 	./src/mixed.cpp
+	./src/real.cpp
 	./src/transpose.cpp
 	./src/transpose.S
 	./src/transpose_prime.cpp
