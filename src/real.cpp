@@ -18,23 +18,33 @@ enum sort_type {
 	TOP, MIDDLE
 };
 
+int reverse_digits(int* digs, int ndigs, int index) {
+	int k = index;
+	int j = 0;
+	for (int l = 0; l < ndigs; l++) {
+		std::div_t q = std::div(k, digs[l]);
+		j *= digs[l];
+		j += q.rem;
+		k = q.quot;
+	}
+	return j;
+}
+
 void reverse_digits(double* X, int* digs, int ndigs, int M) {
 	const int N = std::reduce(digs, digs + ndigs, 1, std::multiplies<int>());
-	for (int i = 0; i < N; i++) {
-		int k = i;
-		int j = 0;
-		for (int l = 0; l < ndigs; l++) {
-			std::div_t q = std::div(k, digs[l]);
-			j *= digs[l];
-			j += q.rem;
-			k = q.quot;
-		}
-		if (i > j) {
-			const int i0 = M * i;
-			const int j0 = M * j;
-			for (int m = 0; m < M; m++) {
-				std::swap(X[i0 + m], X[j0 + m]);
-			}
+	static thread_local std::vector<bool> visited;
+	visited.resize(N);
+	std::fill(visited.begin(), visited.end(), false);
+	for (int i = 1; i < N - 1; i++) {
+		if (!visited[i]) {
+			int j = i;
+			do {
+				j = reverse_digits(digs, ndigs, j);
+				for (int m = 0; m < M; m++) {
+					std::swap(X[i * M + m], X[j * M + m]);
+				}
+				visited[j] = true;
+			} while (j != i);
 		}
 	}
 }
@@ -92,44 +102,6 @@ void sfft_complex(double* X, double* Y, int s, int N1, double* w, int width) {
 	}
 }
 
-void reverse_imaginary(double* Y, int NHI, int NMID, int NLO) {
-	for (int nhi = 0; nhi < NHI; nhi++) {
-		for (int i = NMID; i < NMID - i - 1; i++) {
-			const int k = NLO * (i + NMID * nhi);
-			const int l = NLO * ((NMID - i - 1) + NMID * nhi);
-			for (int nlo = 0; nlo < NLO; nlo++) {
-				std::swap(Y[k + nlo], Y[l + nlo]);
-			}
-		}
-	}
-}
-
-void fft_complex(double* X, double* Y, int N, int* digb, int* dige, int M) {
-	const int N1 = *digb;
-	const int N2 = N / N1;
-	if (N2 > 1) {
-		for (int n1 = 0; n1 < N1; n1++) {
-			fft_complex(X + n1 * N2, Y + n1 * N2, N2, digb + 1, dige, M);
-		}
-	}
-	static thread_local std::vector<double> wn;
-	wn.resize(2 * N1);
-	const auto* WN = get_twiddles(N);
-	for (int k2 = 1; k2 < N2 / 2; k2++) {
-		for (int w = 4, m = 0; w >= 1; w >>= 1) {
-			for (int n1 = 0; n1 < N1; n1++) {
-				for (int l = 0; l < w; l++) {
-					wn[2 * w * n1 + l] = WN[n1 * k2].real();
-					wn[2 * w * n1 + l + w] = WN[n1 * k2].imag();
-				}
-			}
-			for (; m <= M - w; m += w) {
-				sfft_complex(X + M * k2 + m, Y + M * k2 + m, M * N2, N1, wn.data(), w);
-			}
-		}
-	}
-}
-
 void fft_real(double* X, int N, int* digb, int* dige, int M) {
 	const int N1 = *digb;
 	const int N2 = N / N1;
@@ -170,12 +142,84 @@ void fft_real(double* X, int N, int* digb, int* dige, int M) {
 	}
 }
 
-void fft_skew(double* X, int N, int* digb, int* dige, int M) {
+void fft_post_skew(double* X, int N, int M, std::pair<double, double> in) {
+	const auto* W2 = get_twiddles(2 * N);
 	if (N % 2 == 0) {
+		double T1 = in.first;
+		double T2 = in.second;
+		double T3 = X[N - 1];
+		X[N - 1] = -0.5 * X[0];
+		X[0] = T1 + T2;
+		double T4;
+		for (int k1 = 1; k1 < N / 2 - 1; k1++) {
+			T4 = X[N - k1 - 1];
+			X[N - k1 - 1] = -X[k1] + X[N - k1];
+			X[k1] = T3 + X[k1 - 1];
+			T3 = T4;
+		}
+		X[N / 2] = 0.5 * X[N / 2];
+		X[N / 2 - 1] = T1 - T2;
 	} else {
-
+		std::complex<double> z0(in.first, in.second);
+		for (int n = 1; n <= N / 4; n++) {
+			std::swap(X[N - n], X[N / 2 + n]);
+			X[N - n] = -X[N - n];
+			X[N / 2 + n] = -X[N / 2 + n];
+			std::swap(X[n], X[N / 2 - n]);
+		}
+		X[N / 2] = X[0];
+		X[0] = z0.real();
+		X[N - 1] = z0.imag();
 	}
+}
 
+std::pair<double, double> fft_pre_skew(double* X, int N, int* digb, int* dige, int M) {
+	const auto* W2 = get_twiddles(2 * N);
+	if (N % 2 == 0) {
+		std::vector<std::complex<double>> Z(N / 2 + 1);
+		double T1 = 0.0, T2 = 0.0;
+		for (int n = 0; n < N / 2; n++) {
+			const auto pn = reverse_digits(digb, dige - digb, n);
+			T1 += X[n] * W2[pn].real();
+			X[n] *= -2.0 * W2[pn].imag();
+		}
+		for (int n = N / 2; n < N; n++) {
+			const auto pn = reverse_digits(digb, dige - digb, n);
+			T2 += X[pn] * W2[pn].real();
+			X[n] *= -2.0 * W2[pn].imag();
+		}
+		return std::make_pair(T1, T2);
+	} else {
+		std::complex<double> z0(0.0, 0.0);
+		for (int n = 0; n < N; n++) {
+			const auto pn = reverse_digits(digb, dige - digb, n);
+			z0 += X[n] * W2[pn];
+			X[n] *= std::pow(-1, pn);
+		}
+		return std::make_pair(z0.real(), z0.imag());
+	}
+}
+
+void form_complex(double* X, int N1, int N2, int M) {
+	for (int k1 = 0; k1 < N2; k1++) {
+		for (int k2 = 1; k2 < N - k2; k2++) {
+			const auto lri = X + N2 * M * k1 + k2 * M;
+			const auto rri = X + N2 * M * k1 + (N2 - k2) * M;
+			const auto lii = X + N2 * M * (N1 - k1) + k2 * M;
+			const auto rii = X + N2 * M * (N1 - k1) + (N2 - k2) * M;
+			for (int m = 0; m < M; m++) {
+				const auto x1 = X[lri + m] - X[rii + m];
+				const auto x2 = X[lri + m] + X[rii + m];
+				const auto y1 = X[lii + m] + X[rri + m];
+				const auto y2 = X[lii + m] - X[rri + m];
+				X[lri + m] = x1;
+				X[lli + m] = x2;
+				X[rri + m] = y1;
+				X[rli + m] = y2;
+			}
+
+		}
+	}
 }
 
 void fft_real(double* X, int N) {
@@ -211,7 +255,17 @@ void fft_real(double* X, int N) {
 	const int N2 = std::reduce(N2s.begin(), N2s.end(), 1, std::multiplies<int>());
 	const int N3 = N1;
 	reverse_digits(X, Ns.data(), Ns.size(), 0, N1s.size());
+	fft_real(X, N1, N1s.data(), N1s.data() + N1s.size(), N2 * N3);
 	reverse_digits(X, Ns.data(), Ns.size(), N1s.size(), N1s.size() + N2s.size());
+	fft_real(X, N2, N2s.data(), N2s.data() + N2s.size(), N3);
+	if (N1 % 2 == 0) {
+		auto rc = fft_pre_skew(X + N1 * N2 * N3 / 2, N2, N2s.data(), N2s.data() + N2s.size(), N3);
+		fft_real(X + N1 * N2 * N3 / 2, N2, N2s.data(), N2s.data() + N2s.size(), N3);
+		fft_post_skew(X + N1 * N2 * N3 / 2, N2, N3, rc);
+	}
+	for (int k1 = 1; k1 < N1; k1++) {
+		fft_real(X + k1 * N2 * N3, N2, N2s.data(), N2s.data() + N2s.size(), N3);
+	}
 	transpose(X, N1, N2);
 	reverse_digits(X, Ns.data(), Ns.size(), N1s.size() + N2s.size(), Ns.size());
 }
