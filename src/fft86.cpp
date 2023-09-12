@@ -319,18 +319,28 @@ void dct3(double* Y, int N) {
 
 void fft_skew2(double* x, int N) {
 	std::vector<double> X(x, x + N);
+	const auto* W2 = get_twiddles(2 * N);
 	if (N % 2 == 0) {
+		auto P = get_digit_reversal(2, N);
+		for (int n = 0; n < N; n++) {
+			if (P[n] > n) {
+				std::swap(X[P[n]], X[n]);
+			}
+		}
 		std::vector<std::complex<double>> Z(N / 2 + 1);
-		const auto* W2 = get_twiddles(2 * N);
 		double T1 = 0.0, T2 = 0.0;
 		for (int n = 0; n < N / 2; n++) {
-			T1 += X[2 * n] * W2[2 * n].real();
-			T2 += X[2 * n + 1] * W2[2 * n + 1].real();
+			T1 += X[n] * W2[P[n]].real();
+			T2 += X[n + N / 2] * W2[P[n + N / 2]].real();
 		}
 		for (int n = 0; n < N; n++) {
-			X[n] *= -2.0 * W2[n].imag();
+			X[n] *= -2.0 * W2[P[n]].imag();
 		}
-		printf("%e %e\n", T1, T2);
+		for (int n = 0; n < N; n++) {
+			if (P[n] > n) {
+				std::swap(X[P[n]], X[n]);
+			}
+		}
 		fftw_real(X, Z);
 		for (int n = 1; n < N / 2; n++) {
 			X[n] = Z[n].real();
@@ -338,7 +348,6 @@ void fft_skew2(double* x, int N) {
 		}
 		X[0] = Z[0].real();
 		X[N / 2] = Z[N / 2].real();
-
 		double T3 = X[N - 1];
 		X[N - 1] = -0.5 * X[0];
 		X[0] = T1 + T2;
@@ -352,21 +361,39 @@ void fft_skew2(double* x, int N) {
 		X[N / 2] = 0.5 * X[N / 2];
 		X[N / 2 - 1] = T1 - T2;
 	} else {
+		auto P = get_digit_reversal(5, N);
+		for (int n = 0; n < N; n++) {
+			if (P[n] > n) {
+				std::swap(X[P[n]], X[n]);
+			}
+		}
 		std::vector<double> y(N);
 		const int dn = N / 2;
 		for (int n = 0; n < N; n++) {
 			y[n] = X[n];
-			y[n] *= std::pow(-1, n);
+			y[n] *= std::pow(-1, P[n]);
 		}
 		std::vector<std::complex<double>> z((N + 1) / 2);
+		for (int n = 0; n < N; n++) {
+			if (P[n] > n) {
+				std::swap(y[P[n]], y[n]);
+			}
+		}
 		fftw_real(y, z);
 		std::complex<double> z0(0.0, 0.0);
 		for (int n = 0; n < N; n++) {
-			z0 += X[n] * std::polar(1.0, -M_PI * n / N);
+			z0 += X[n] * W2[P[n]];
 		}
-		for (int n = 0; n < N / 2; n++) {
-			X[N / 2 - n] = z[(n + dn) % (N / 2)].real();
-			X[N / 2 + n] = -z[(n + dn) % (N / 2)].imag();
+		X[0] = z[0].real();
+		for (int n = 1; n < N - n; n++) {
+			X[n] = z[n].real();
+			X[N - n] = z[n].imag();
+		}
+		for (int n = 1; n <= N / 4; n++) {
+			std::swap(X[N - n], X[N / 2 + n]);
+			X[N - n] *= -1;
+			X[N / 2 + n] *= -1;
+			std::swap(X[n], X[N / 2 - n]);
 		}
 		X[0] = z0.real();
 		X[N - 1] = z0.imag();
@@ -429,7 +456,7 @@ void dft(double* X, int N) {
 #include <sfft.hpp>
 
 int main() {
-	int N = 16;
+	int N = 25;
 	std::vector<double> X(N);
 	std::vector<double> Y(N);
 	for (int n = 0; n < N; n++) {
