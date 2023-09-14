@@ -95,7 +95,7 @@ void test_pfa(int N) {
 		for (int n = 0; n < N; n++) {
 			Z1[n] = Z2[n] = std::complex<double>(0,0);
 		}
-		Z1[7] = Z2[7] = 1.0;
+		Z1[1] = Z2[1] = 1.0;
 		t0 += fftw(Z2.data(), N);
 		timer tm;
 		tm.start();
@@ -112,7 +112,7 @@ void test_pfa(int N) {
 					Z2[n].imag(), Z2[n].real() - Z1[n].real(), Z2[n].imag() - Z1[n].imag());
 		}
 		err /= N;
-	//	abort();
+		abort();
 	}
 
 	printf("%20i %20e %20e %20e %20f - ", N, err, t0, t1, t0 / (1.0e-10 + t1));
@@ -122,7 +122,7 @@ void test_pfa(int N) {
 #include <sfft.hpp>
 
 int main() {
-	test_pfa(2*2*3);
+	test_pfa(2*3*5);
 //feenableexcept(FE_DIVBYZERO);
 //feenableexcept(FE_INVALID);
 //	feenableexcept(FE_OVERFLOW);

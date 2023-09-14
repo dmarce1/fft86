@@ -29,42 +29,31 @@ void pfa(std::complex<double>* X, int N) {
 	printf("\n");
 	const int nfax = ifax.size();
 	for (int k = 0; k < nfax; k++) {
-		int mu;
-		int MM;
-		const int ifac = ifax[k];
-		const int M = N / ifac;
-		for (int j = 1; j <= ifac; j++) {
-			mu = j;
-			MM = j * M;
-			if (MM % ifac == 1) {
+		int R;
+		int dN;
+		const int N1 = ifax[k];
+		const int N2 = N / N1;
+		for (int j = 1; j <= N1; j++) {
+			R = j;
+			dN = j * N2;
+			if (dN % N1 == 1) {
 				break;
 			}
 		}
-		printf("ifac: %i M: %i MM: %i mu: %i\n", ifac, M, MM, mu);
-		I.resize(ifac);
 		Y.resize(N);
-		I[0] = 0;
-		for (int m = 0; m < ifac - 1; m++) {
-			I[m + 1] = (I[m] + MM) % N;
-		}
-		for (int l = 0; l < M; l++) {
-			for (int m = 0; m < ifac; m++) {
-				printf("%i\n", I[m]);
-			}
-			printf("\n");
-			for (int k = 0; k < ifac; k++) {
-				Y[I[k]] = 0.0;
-				for (int n = 0; n < ifac; n++) {
-					Y[I[k]] += X[I[n]] * std::polar(1.0, -2.0 * M_PI * n * k * mu / ifac);
+		for (int l = 0; l < N2; l++) {
+			const int o = (l * (dN - 1)) % N;
+			int k2 = o;
+			for (int k = 0; k < N1; k++) {
+				int n1 = o;
+				Y[k2] = 0.0;
+				for (int n = 0; n < N1; n++) {
+					Y[k2] += X[n1] * std::polar(1.0, -2.0 * M_PI * n * k * R / N1);
+					n1 = (n1 + dN) % N;
 				}
+				k2 = (k2 + dN) % N;
 			}
-			const int ix = I[ifac - 1] + 1;
-			for (int m = ifac - 2; m >= 0; m--) {
-				I[m + 1] = I[m] + 1;
-			}
-			I[0] = ix;
 		}
-		printf("\n");
 		for (int k = 0; k < N; k++) {
 			X[k] = Y[k];
 		}
