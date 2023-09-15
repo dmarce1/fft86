@@ -93,9 +93,9 @@ void test_pfa(int N) {
 	for (int n = 0; n < NTRIAL + 1; n++) {
 		std::vector<std::complex<double>> Z1(N), Z2(N);
 		for (int n = 0; n < N; n++) {
-			Z1[n] = Z2[n] = std::complex<double>(0,0);
+			Z1[n] = Z2[n] = std::complex<double>(rand1(),0);
 		}
-		Z1[1] = Z2[1] = 1.0;
+		Z1[0] = Z2[0] = 1.0;
 		t0 += fftw(Z2.data(), N);
 		timer tm;
 		tm.start();

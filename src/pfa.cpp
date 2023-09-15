@@ -4,10 +4,10 @@
 #include <vector>
 
 void pfa(std::complex<double>* X, int N) {
-	static thread_local std::vector<int> ifax;
+	static thread_local std::vector<int> Ns;
 	static thread_local std::vector<int> I;
 	static thread_local std::vector<std::complex<double>> Y;
-	ifax.resize(0);
+	Ns.resize(0);
 	int M = N;
 	int n1 = 2;
 	while (M > 1) {
@@ -23,39 +23,78 @@ void pfa(std::complex<double>* X, int N) {
 				break;
 			}
 		}
-		printf("%i ", nq);
-		ifax.push_back(nq);
+		Ns.push_back(nq);
 	}
-	printf("\n");
-	const int nfax = ifax.size();
-	for (int k = 0; k < nfax; k++) {
+	for (int k = 0; k < Ns.size(); k++) {
 		int R;
-		int dN;
-		const int N1 = ifax[k];
+		int dN1, dN2;
+		const int N1 = Ns[k];
 		const int N2 = N / N1;
 		for (int j = 1; j <= N1; j++) {
 			R = j;
-			dN = j * N2;
-			if (dN % N1 == 1) {
+			dN1 = j * N2;
+			if (dN1 % N1 == 1) {
+				break;
+			}
+		}
+		for (int j = 1; j <= N2; j++) {
+			dN2 = j * N1;
+			if (dN2 % N2 == 1) {
 				break;
 			}
 		}
 		Y.resize(N);
 		for (int l = 0; l < N2; l++) {
-			const int o = (l * (dN - 1)) % N;
-			int k2 = o;
-			for (int k = 0; k < N1; k++) {
-				int n1 = o;
-				Y[k2] = 0.0;
+			const int o = (l * dN2) % N;
+			for (int k = 0; k < N1 / 2 + 1; k++) {
+				const int k2r = (o + k * dN1) % N;
+				const int k2i = (o + ((N1 - k) % N1) * dN1) % N;
+				Y[k2r] = Y[k2i] = 0.0;
 				for (int n = 0; n < N1; n++) {
-					Y[k2] += X[n1] * std::polar(1.0, -2.0 * M_PI * n * k * R / N1);
-					n1 = (n1 + dN) % N;
+					const int n1 = (o + n * dN1) % N;
+					const auto w = std::polar(1.0, -2.0 * M_PI * n * k * R / N1);
+					Y[k2r] += X[n1] * w.real();
+					if (k2i != k2r) {
+						Y[k2i] += X[n1] * w.imag();
+					}
 				}
-				k2 = (k2 + dN) % N;
 			}
 		}
 		for (int k = 0; k < N; k++) {
 			X[k] = Y[k];
+		}
+	}
+	for (int k = Ns.size() - 1; k >= 0; k--) {
+		int dN1, dN2;
+		const int N1 = Ns[k];
+		const int N2 = N / N1;
+		for (int j = 1; j <= N1; j++) {
+			dN1 = j * N2;
+			if (dN1 % N1 == 1) {
+				break;
+			}
+		}
+		for (int j = 1; j <= N2; j++) {
+			dN2 = j * N1;
+			if (dN2 % N2 == 1) {
+				break;
+			}
+		}
+		Y.resize(N);
+		std::complex<double> J(0, 1);
+		for (int l = 0; l < N2; l++) {
+			const int o = (l * dN2) % N;
+			for (int k = 1; k < (N1 + 1) / 2; k++) {
+				const int k2r = (o + k * dN1) % N;
+				const int k2i = (o + ((N1 - k) % N1) * dN1) % N;
+				const auto yr = Y[k2r] + J * Y[k2i];
+				const auto yi = Y[k2r] - J * Y[k2i];
+				Y[k2r] = yr;
+				Y[k2i] = yi;
+			}
+			for (int k = 0; k < N; k++) {
+				X[k] = Y[k];
+			}
 		}
 	}
 }
