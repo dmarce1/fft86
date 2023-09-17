@@ -97,7 +97,8 @@ void test_pfa(int N) {
 			Z2[n] = std::complex<double>(rand1(), 0);
 			X[n] = Z2[n].real();
 		}
-		//Z1[1] = Z2[1] = 1.0;
+		Z2[3*N/4] = 1.0;
+		X[3*N/4] = 1.0;
 		t0 += fftw(Z2.data(), N);
 		timer tm;
 		tm.start();
@@ -108,22 +109,26 @@ void test_pfa(int N) {
 			t1 = t0 = 0.0;
 		}
 		err = 0.0;
-		for (int n = 0; n < N; n++) {
+		for (int n = 0; n < N / 2 + 1; n++) {
 			std::complex<double> Z;
 			Z.real(X[n]);
+			Z.imag(0);
 			if (n != 0 && !(N % 2 == 0 && N / 2 == n)) {
-				if( n < N - n ) {
-					Z.imag(X[n]);
+				if (n < N - n) {
+					Z.imag(X[N - n]);
 				} else {
-					Z.imag(-X[n]);
+					Z.imag(-X[N - n]);
 				}
 			}
+			if (N % 2 == 0 && N / 2 == n) {
+				Z.real(X[n]);
+				Z.imag(0);
+			}
 			err += std::abs(Z - Z2[n]);
-			printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z.real(), Z.imag(), Z2[n].real(), Z2[n].imag(),
-					Z2[n].real() - Z.real(), Z2[n].imag() - Z.imag());
+	//		printf("%3i | %15e %15e  | %15e %15e  | %15e %15e |\n", n, Z.real(), Z.imag(), Z2[n].real(), Z2[n].imag(),
+	//				Z2[n].real() - Z.real(), Z2[n].imag() - Z.imag());
 		}
 		err /= N;
-		abort();
 	}
 
 	printf("%20i %20e %20e %20e %20f - ", N, err, t0, t1, t0 / (1.0e-10 + t1));
@@ -133,7 +138,7 @@ void test_pfa(int N) {
 #include <sfft.hpp>
 
 int main() {
-	test_pfa( 2*3 * 5*7);
+	test_pfa(16 * 3 * 5 * 7 * 11);
 //feenableexcept(FE_DIVBYZERO);
 //feenableexcept(FE_INVALID);
 //	feenableexcept(FE_OVERFLOW);

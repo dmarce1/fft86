@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dmarce1/cuda-workspace/fftu/src/apply_twiddles.S
+
+/home/dmarce1/cuda-workspace/fftu/src/fft_1d_batch_dif.S
+
+/home/dmarce1/cuda-workspace/fftu/src/fft_1d_batch_dit.S
+
+/home/dmarce1/cuda-workspace/fftu/src/scramble.S
+
+/home/dmarce1/cuda-workspace/fftu/src/transpose.S
+

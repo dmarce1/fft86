@@ -1,0 +1,805 @@
+The system is: Linux - 5.15.0-79-generic - x86_64
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /home/dmarce1/local/gcc/bin/c++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/3.21.3/CompilerIdCXX/a.out"
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /home/dmarce1/local/gcc/bin/gcc 
+Build flags: -march=native
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/3.21.3/CompilerIdC/a.out"
+
+Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+gcc (GCC) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ff7ee/fast && /usr/bin/make  -f CMakeFiles/cmTC_ff7ee.dir/build.make CMakeFiles/cmTC_ff7ee.dir/build
+make[1]: Entering directory '/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o
+/home/dmarce1/local/gcc/bin/c++   -v -o CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o -c /home/dmarce1/local/cmake/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=/home/dmarce1/local/gcc/bin/c++
+Target: x86_64-pc-linux-gnu
+Configured with: ./configure --prefix=/home/dmarce1/local/gcc/ --with-local-prefix=/home/dmarce1/local/gcc/ --enable-languages=c,c++,fortran,lto --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --disable-bootstrap
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.2.0 (GCC) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff7ee.dir/'
+ /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /home/dmarce1/local/cmake/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_ff7ee.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccyIDWzL.s
+GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/home/dmarce1/local/gcc//include/x86_64-linux-gnu"
+ignoring duplicate directory "/home/dmarce1/local/gcc/include"
+ignoring nonexistent directory "/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
+ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"
+ignoring nonexistent directory "/home/dmarce1/local/gsl/include"
+ignoring nonexistent directory "/home/dmarce1/local/chealpix/include"
+ignoring nonexistent directory "/home/dmarce1/local/mpi/include"
+ignoring nonexistent directory "/home/dmarce1/local/release/octotiger/include"
+ignoring nonexistent directory "/home/dmarce1/local/mpich/include"
+ignoring duplicate directory "/home/dmarce1/local/silo/include"
+ignoring nonexistent directory "/home/dmarce1/local/boost/include"
+ignoring duplicate directory "/home/dmarce1/local/vc/include"
+ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"
+ignoring duplicate directory "/home/dmarce1/local/gperftools/include"
+ignoring nonexistent directory "/home/dmarce1/local/cmake/include"
+ignoring duplicate directory "/home/dmarce1/local/gcc/include"
+  as it is a non-system directory that duplicates a system directory
+ignoring nonexistent directory "/home/dmarce1/local/healpix/include"
+ignoring duplicate directory "/home/dmarce1/local/fftw3/include"
+ignoring duplicate directory "/home/dmarce1/local/tbb/include"
+ignoring duplicate directory "/home/dmarce1/local/fftw3/include"
+ignoring nonexistent directory "/home/dmarce1/local/gsl/include"
+ignoring nonexistent directory "/home/dmarce1/local/chealpix/include"
+ignoring nonexistent directory "/home/dmarce1/local/mpi/include"
+ignoring duplicate directory "/home/dmarce1/local/mp-units/include"
+ignoring duplicate directory "/home/dmarce1/local/jemalloc/include"
+ignoring duplicate directory "/home/dmarce1/local/hdf5/include"
+ignoring nonexistent directory "/home/dmarce1/local/release/octotiger/include"
+ignoring duplicate directory "/home/dmarce1/local/release/hpx/include"
+ignoring nonexistent directory "/home/dmarce1/local/mpich/include"
+ignoring duplicate directory "/home/dmarce1/local/silo/include"
+ignoring nonexistent directory "/home/dmarce1/local/boost/include"
+ignoring duplicate directory "/home/dmarce1/local/vc/include"
+ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"
+ignoring duplicate directory "/home/dmarce1/local/gperftools/include"
+ignoring nonexistent directory "/home/dmarce1/local/cmake/include"
+ignoring duplicate directory "/home/dmarce1/local/gcc/include"
+  as it is a non-system directory that duplicates a system directory
+ignoring nonexistent directory "/home/dmarce1/local/healpix/include"
+ignoring duplicate directory "/home/dmarce1/local/fftw3/include"
+ignoring nonexistent directory "/usr/local/cuda-11.7/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /home/dmarce1/local/debug/hpx/include
+ /home/dmarce1/local/silo/include
+ /home/dmarce1/local/vc/include
+ /home/dmarce1/local/gperftools/include
+ /home/dmarce1/local/tbb/include
+ /home/dmarce1/local/fftw3/include
+ /home/dmarce1/local/mp-units/include
+ /home/dmarce1/local/jemalloc/include
+ /home/dmarce1/local/hdf5/include
+ /home/dmarce1/local/release/hpx/include
+ /usr/local/include
+ .
+ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0
+ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu
+ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward
+ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include
+ /home/dmarce1/local/gcc//include
+ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 0efc6951386d6163cbcaf42baec4e502
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff7ee.dir/'
+ as -v --64 -o CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccyIDWzL.s
+GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34
+COMPILER_PATH=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib64/:/home/dmarce1//local/debug/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/usr/local/lib/:/usr/lib/x86_64-linux-gnu/hdf5/serial/:/usr/lib/x86_64-linux-gnu/:./:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.'
+Linking CXX executable cmTC_ff7ee
+/home/dmarce1/local/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff7ee.dir/link.txt --verbose=1
+/home/dmarce1/local/gcc/bin/c++  -v CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ff7ee 
+Using built-in specs.
+COLLECT_GCC=/home/dmarce1/local/gcc/bin/c++
+COLLECT_LTO_WRAPPER=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: ./configure --prefix=/home/dmarce1/local/gcc/ --with-local-prefix=/home/dmarce1/local/gcc/ --enable-languages=c,c++,fortran,lto --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --disable-bootstrap
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.2.0 (GCC) 
+COMPILER_PATH=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib64/:/home/dmarce1//local/debug/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/usr/local/lib/:/usr/lib/x86_64-linux-gnu/hdf5/serial/:/usr/lib/x86_64-linux-gnu/:./:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ff7ee' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_ff7ee.'
+ /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccCUYVJf.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_ff7ee /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/home/dmarce1/local/gcc/lib64/../lib64 -L/home/dmarce1//local/gcc/lib/../lib64 -L/home/dmarce1/local/gcc/lib64/../lib64 -L/home/dmarce1//local/gcc/lib/../lib64 -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/home/dmarce1//local/debug/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1//local/tbb/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/mp-units/lib -L/home/dmarce1//local/jemalloc/lib -L/home/dmarce1//local/hdf5/lib -L/home/dmarce1//local/release/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1/local/gcc/lib64 -L/home/dmarce1//local/gcc/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/tbb/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/mp-units/lib -L/home/dmarce1//local/jemalloc/lib -L/home/dmarce1//local/hdf5/lib -L/home/dmarce1//local/release/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1/local/gcc/lib64 -L/home/dmarce1//local/gcc/lib -L/home/dmarce1//local/fftw3/lib -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/hdf5/serial -L/usr/lib/x86_64-linux-gnu -L. -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /lib/x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ff7ee' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_ff7ee.'
+make[1]: Leaving directory '/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/home/dmarce1/local/debug/hpx/include]
+    add: [/home/dmarce1/local/silo/include]
+    add: [/home/dmarce1/local/vc/include]
+    add: [/home/dmarce1/local/gperftools/include]
+    add: [/home/dmarce1/local/tbb/include]
+    add: [/home/dmarce1/local/fftw3/include]
+    add: [/home/dmarce1/local/mp-units/include]
+    add: [/home/dmarce1/local/jemalloc/include]
+    add: [/home/dmarce1/local/hdf5/include]
+    add: [/home/dmarce1/local/release/hpx/include]
+    add: [/usr/local/include]
+    add: [.]
+    add: [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+    add: [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+    add: [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+    add: [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+    add: [/home/dmarce1/local/gcc//include]
+    add: [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/home/dmarce1/local/debug/hpx/include] ==> [/home/dmarce1/local/debug/hpx/include]
+  collapse include dir [/home/dmarce1/local/silo/include] ==> [/home/dmarce1/local/silo/include]
+  collapse include dir [/home/dmarce1/local/vc/include] ==> [/home/dmarce1/local/vc/include]
+  collapse include dir [/home/dmarce1/local/gperftools/include] ==> [/home/dmarce1/local/gperftools/include]
+  collapse include dir [/home/dmarce1/local/tbb/include] ==> [/home/dmarce1/local/tbb/include]
+  collapse include dir [/home/dmarce1/local/fftw3/include] ==> [/home/dmarce1/local/fftw3/include]
+  collapse include dir [/home/dmarce1/local/mp-units/include] ==> [/home/dmarce1/local/mp-units/include]
+  collapse include dir [/home/dmarce1/local/jemalloc/include] ==> [/home/dmarce1/local/jemalloc/include]
+  collapse include dir [/home/dmarce1/local/hdf5/include] ==> [/home/dmarce1/local/hdf5/include]
+  collapse include dir [/home/dmarce1/local/release/hpx/include] ==> [/home/dmarce1/local/release/hpx/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  skipping relative include dir [.]
+  collapse include dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0] ==> [/home/dmarce1/local/gcc/include/c++/12.2.0]
+  collapse include dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu] ==> [/home/dmarce1/local/gcc/include/c++/12.2.0/x86_64-pc-linux-gnu]
+  collapse include dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward] ==> [/home/dmarce1/local/gcc/include/c++/12.2.0/backward]
+  collapse include dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include] ==> [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+  collapse include dir [/home/dmarce1/local/gcc//include] ==> [/home/dmarce1/local/gcc/include]
+  collapse include dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed] ==> [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/home/dmarce1/local/debug/hpx/include;/home/dmarce1/local/silo/include;/home/dmarce1/local/vc/include;/home/dmarce1/local/gperftools/include;/home/dmarce1/local/tbb/include;/home/dmarce1/local/fftw3/include;/home/dmarce1/local/mp-units/include;/home/dmarce1/local/jemalloc/include;/home/dmarce1/local/hdf5/include;/home/dmarce1/local/release/hpx/include;/usr/local/include;/home/dmarce1/local/gcc/include/c++/12.2.0;/home/dmarce1/local/gcc/include/c++/12.2.0/x86_64-pc-linux-gnu;/home/dmarce1/local/gcc/include/c++/12.2.0/backward;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include;/home/dmarce1/local/gcc/include;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make -f Makefile cmTC_ff7ee/fast && /usr/bin/make  -f CMakeFiles/cmTC_ff7ee.dir/build.make CMakeFiles/cmTC_ff7ee.dir/build]
+  ignore line: [make[1]: Entering directory '/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/home/dmarce1/local/gcc/bin/c++   -v -o CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o -c /home/dmarce1/local/cmake/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/home/dmarce1/local/gcc/bin/c++]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: ./configure --prefix=/home/dmarce1/local/gcc/ --with-local-prefix=/home/dmarce1/local/gcc/ --enable-languages=c,c++,fortran,lto --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --disable-bootstrap]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.2.0 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff7ee.dir/']
+  ignore line: [ /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /home/dmarce1/local/cmake/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_ff7ee.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccyIDWzL.s]
+  ignore line: [GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.0  MPFR version 4.0.2  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/gcc//include/x86_64-linux-gnu"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gcc/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/gsl/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/chealpix/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/mpi/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/release/octotiger/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/mpich/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/silo/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/boost/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/vc/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gperftools/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/cmake/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gcc/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/healpix/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/fftw3/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/tbb/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/fftw3/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/gsl/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/chealpix/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/mpi/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/mp-units/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/jemalloc/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/hdf5/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/release/octotiger/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/release/hpx/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/mpich/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/silo/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/boost/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/vc/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gperftools/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/cmake/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gcc/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/healpix/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/fftw3/include"]
+  ignore line: [ignoring nonexistent directory "/usr/local/cuda-11.7/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /home/dmarce1/local/debug/hpx/include]
+  ignore line: [ /home/dmarce1/local/silo/include]
+  ignore line: [ /home/dmarce1/local/vc/include]
+  ignore line: [ /home/dmarce1/local/gperftools/include]
+  ignore line: [ /home/dmarce1/local/tbb/include]
+  ignore line: [ /home/dmarce1/local/fftw3/include]
+  ignore line: [ /home/dmarce1/local/mp-units/include]
+  ignore line: [ /home/dmarce1/local/jemalloc/include]
+  ignore line: [ /home/dmarce1/local/hdf5/include]
+  ignore line: [ /home/dmarce1/local/release/hpx/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ .]
+  ignore line: [ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+  ignore line: [ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+  ignore line: [ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+  ignore line: [ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+  ignore line: [ /home/dmarce1/local/gcc//include]
+  ignore line: [ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.0  MPFR version 4.0.2  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 0efc6951386d6163cbcaf42baec4e502]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff7ee.dir/']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccyIDWzL.s]
+  ignore line: [GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34]
+  ignore line: [COMPILER_PATH=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib64/:/home/dmarce1//local/debug/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/usr/local/lib/:/usr/lib/x86_64-linux-gnu/hdf5/serial/:/usr/lib/x86_64-linux-gnu/:./:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.']
+  ignore line: [Linking CXX executable cmTC_ff7ee]
+  ignore line: [/home/dmarce1/local/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff7ee.dir/link.txt --verbose=1]
+  ignore line: [/home/dmarce1/local/gcc/bin/c++  -v CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ff7ee ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/home/dmarce1/local/gcc/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: ./configure --prefix=/home/dmarce1/local/gcc/ --with-local-prefix=/home/dmarce1/local/gcc/ --enable-languages=c,c++,fortran,lto --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --disable-bootstrap]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib64/:/home/dmarce1//local/debug/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/usr/local/lib/:/usr/lib/x86_64-linux-gnu/hdf5/serial/:/usr/lib/x86_64-linux-gnu/:./:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ff7ee' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_ff7ee.']
+  link line: [ /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccCUYVJf.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_ff7ee /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/home/dmarce1/local/gcc/lib64/../lib64 -L/home/dmarce1//local/gcc/lib/../lib64 -L/home/dmarce1/local/gcc/lib64/../lib64 -L/home/dmarce1//local/gcc/lib/../lib64 -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/home/dmarce1//local/debug/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1//local/tbb/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/mp-units/lib -L/home/dmarce1//local/jemalloc/lib -L/home/dmarce1//local/hdf5/lib -L/home/dmarce1//local/release/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1/local/gcc/lib64 -L/home/dmarce1//local/gcc/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/tbb/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/mp-units/lib -L/home/dmarce1//local/jemalloc/lib -L/home/dmarce1//local/hdf5/lib -L/home/dmarce1//local/release/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1/local/gcc/lib64 -L/home/dmarce1//local/gcc/lib -L/home/dmarce1//local/fftw3/lib -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/hdf5/serial -L/usr/lib/x86_64-linux-gnu -L. -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /lib/x86_64-linux-gnu/crtn.o]
+    arg [/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccCUYVJf.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_ff7ee] ==> ignore
+    arg [/lib/x86_64-linux-gnu/crt1.o] ==> obj [/lib/x86_64-linux-gnu/crt1.o]
+    arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
+    arg [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
+    arg [-L/home/dmarce1/local/gcc/lib64/../lib64] ==> dir [/home/dmarce1/local/gcc/lib64/../lib64]
+    arg [-L/home/dmarce1//local/gcc/lib/../lib64] ==> dir [/home/dmarce1//local/gcc/lib/../lib64]
+    arg [-L/home/dmarce1/local/gcc/lib64/../lib64] ==> dir [/home/dmarce1/local/gcc/lib64/../lib64]
+    arg [-L/home/dmarce1//local/gcc/lib/../lib64] ==> dir [/home/dmarce1//local/gcc/lib/../lib64]
+    arg [-L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+    arg [-L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/home/dmarce1//local/debug/hpx/lib] ==> dir [/home/dmarce1//local/debug/hpx/lib]
+    arg [-L/home/dmarce1//local/silo/lib] ==> dir [/home/dmarce1//local/silo/lib]
+    arg [-L/home/dmarce1//local/vc/lib] ==> dir [/home/dmarce1//local/vc/lib]
+    arg [-L/home/dmarce1//local/gperftools/lib] ==> dir [/home/dmarce1//local/gperftools/lib]
+    arg [-L/home/dmarce1//local/tbb/lib] ==> dir [/home/dmarce1//local/tbb/lib]
+    arg [-L/home/dmarce1//local/fftw3/lib] ==> dir [/home/dmarce1//local/fftw3/lib]
+    arg [-L/home/dmarce1//local/mp-units/lib] ==> dir [/home/dmarce1//local/mp-units/lib]
+    arg [-L/home/dmarce1//local/jemalloc/lib] ==> dir [/home/dmarce1//local/jemalloc/lib]
+    arg [-L/home/dmarce1//local/hdf5/lib] ==> dir [/home/dmarce1//local/hdf5/lib]
+    arg [-L/home/dmarce1//local/release/hpx/lib] ==> dir [/home/dmarce1//local/release/hpx/lib]
+    arg [-L/home/dmarce1//local/silo/lib] ==> dir [/home/dmarce1//local/silo/lib]
+    arg [-L/home/dmarce1//local/vc/lib] ==> dir [/home/dmarce1//local/vc/lib]
+    arg [-L/home/dmarce1//local/gperftools/lib] ==> dir [/home/dmarce1//local/gperftools/lib]
+    arg [-L/home/dmarce1/local/gcc/lib64] ==> dir [/home/dmarce1/local/gcc/lib64]
+    arg [-L/home/dmarce1//local/gcc/lib] ==> dir [/home/dmarce1//local/gcc/lib]
+    arg [-L/home/dmarce1//local/fftw3/lib] ==> dir [/home/dmarce1//local/fftw3/lib]
+    arg [-L/home/dmarce1//local/tbb/lib] ==> dir [/home/dmarce1//local/tbb/lib]
+    arg [-L/home/dmarce1//local/fftw3/lib] ==> dir [/home/dmarce1//local/fftw3/lib]
+    arg [-L/home/dmarce1//local/mp-units/lib] ==> dir [/home/dmarce1//local/mp-units/lib]
+    arg [-L/home/dmarce1//local/jemalloc/lib] ==> dir [/home/dmarce1//local/jemalloc/lib]
+    arg [-L/home/dmarce1//local/hdf5/lib] ==> dir [/home/dmarce1//local/hdf5/lib]
+    arg [-L/home/dmarce1//local/release/hpx/lib] ==> dir [/home/dmarce1//local/release/hpx/lib]
+    arg [-L/home/dmarce1//local/silo/lib] ==> dir [/home/dmarce1//local/silo/lib]
+    arg [-L/home/dmarce1//local/vc/lib] ==> dir [/home/dmarce1//local/vc/lib]
+    arg [-L/home/dmarce1//local/gperftools/lib] ==> dir [/home/dmarce1//local/gperftools/lib]
+    arg [-L/home/dmarce1/local/gcc/lib64] ==> dir [/home/dmarce1/local/gcc/lib64]
+    arg [-L/home/dmarce1//local/gcc/lib] ==> dir [/home/dmarce1//local/gcc/lib]
+    arg [-L/home/dmarce1//local/fftw3/lib] ==> dir [/home/dmarce1//local/fftw3/lib]
+    arg [-L/usr/local/lib] ==> dir [/usr/local/lib]
+    arg [-L/usr/lib/x86_64-linux-gnu/hdf5/serial] ==> dir [/usr/lib/x86_64-linux-gnu/hdf5/serial]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L.] ==> ignore
+    arg [-L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
+    arg [CMakeFiles/cmTC_ff7ee.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o] ==> obj [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o]
+    arg [/lib/x86_64-linux-gnu/crtn.o] ==> obj [/lib/x86_64-linux-gnu/crtn.o]
+  collapse library dir [/home/dmarce1/local/gcc/lib64/../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1//local/gcc/lib/../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1/local/gcc/lib64/../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1//local/gcc/lib/../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+  collapse library dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/home/dmarce1//local/debug/hpx/lib] ==> [/home/dmarce1/local/debug/hpx/lib]
+  collapse library dir [/home/dmarce1//local/silo/lib] ==> [/home/dmarce1/local/silo/lib]
+  collapse library dir [/home/dmarce1//local/vc/lib] ==> [/home/dmarce1/local/vc/lib]
+  collapse library dir [/home/dmarce1//local/gperftools/lib] ==> [/home/dmarce1/local/gperftools/lib]
+  collapse library dir [/home/dmarce1//local/tbb/lib] ==> [/home/dmarce1/local/tbb/lib]
+  collapse library dir [/home/dmarce1//local/fftw3/lib] ==> [/home/dmarce1/local/fftw3/lib]
+  collapse library dir [/home/dmarce1//local/mp-units/lib] ==> [/home/dmarce1/local/mp-units/lib]
+  collapse library dir [/home/dmarce1//local/jemalloc/lib] ==> [/home/dmarce1/local/jemalloc/lib]
+  collapse library dir [/home/dmarce1//local/hdf5/lib] ==> [/home/dmarce1/local/hdf5/lib]
+  collapse library dir [/home/dmarce1//local/release/hpx/lib] ==> [/home/dmarce1/local/release/hpx/lib]
+  collapse library dir [/home/dmarce1//local/silo/lib] ==> [/home/dmarce1/local/silo/lib]
+  collapse library dir [/home/dmarce1//local/vc/lib] ==> [/home/dmarce1/local/vc/lib]
+  collapse library dir [/home/dmarce1//local/gperftools/lib] ==> [/home/dmarce1/local/gperftools/lib]
+  collapse library dir [/home/dmarce1/local/gcc/lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1//local/gcc/lib] ==> [/home/dmarce1/local/gcc/lib]
+  collapse library dir [/home/dmarce1//local/fftw3/lib] ==> [/home/dmarce1/local/fftw3/lib]
+  collapse library dir [/home/dmarce1//local/tbb/lib] ==> [/home/dmarce1/local/tbb/lib]
+  collapse library dir [/home/dmarce1//local/fftw3/lib] ==> [/home/dmarce1/local/fftw3/lib]
+  collapse library dir [/home/dmarce1//local/mp-units/lib] ==> [/home/dmarce1/local/mp-units/lib]
+  collapse library dir [/home/dmarce1//local/jemalloc/lib] ==> [/home/dmarce1/local/jemalloc/lib]
+  collapse library dir [/home/dmarce1//local/hdf5/lib] ==> [/home/dmarce1/local/hdf5/lib]
+  collapse library dir [/home/dmarce1//local/release/hpx/lib] ==> [/home/dmarce1/local/release/hpx/lib]
+  collapse library dir [/home/dmarce1//local/silo/lib] ==> [/home/dmarce1/local/silo/lib]
+  collapse library dir [/home/dmarce1//local/vc/lib] ==> [/home/dmarce1/local/vc/lib]
+  collapse library dir [/home/dmarce1//local/gperftools/lib] ==> [/home/dmarce1/local/gperftools/lib]
+  collapse library dir [/home/dmarce1/local/gcc/lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1//local/gcc/lib] ==> [/home/dmarce1/local/gcc/lib]
+  collapse library dir [/home/dmarce1//local/fftw3/lib] ==> [/home/dmarce1/local/fftw3/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu/hdf5/serial] ==> [/usr/lib/x86_64-linux-gnu/hdf5/serial]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> [/home/dmarce1/local/gcc/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/lib/x86_64-linux-gnu/crt1.o;/lib/x86_64-linux-gnu/crti.o;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o;/lib/x86_64-linux-gnu/crtn.o]
+  implicit dirs: [/home/dmarce1/local/gcc/lib64;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/usr/lib64;/home/dmarce1/local/debug/hpx/lib;/home/dmarce1/local/silo/lib;/home/dmarce1/local/vc/lib;/home/dmarce1/local/gperftools/lib;/home/dmarce1/local/tbb/lib;/home/dmarce1/local/fftw3/lib;/home/dmarce1/local/mp-units/lib;/home/dmarce1/local/jemalloc/lib;/home/dmarce1/local/hdf5/lib;/home/dmarce1/local/release/hpx/lib;/home/dmarce1/local/gcc/lib;/usr/local/lib;/usr/lib/x86_64-linux-gnu/hdf5/serial]
+  implicit fwks: []
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_d2db8/fast && /usr/bin/make  -f CMakeFiles/cmTC_d2db8.dir/build.make CMakeFiles/cmTC_d2db8.dir/build
+make[1]: Entering directory '/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o
+/home/dmarce1/local/gcc/bin/gcc   -march=native    -v -o CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o -c /home/dmarce1/local/cmake/share/cmake-3.21/Modules/CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=/home/dmarce1/local/gcc/bin/gcc
+Target: x86_64-pc-linux-gnu
+Configured with: ./configure --prefix=/home/dmarce1/local/gcc/ --with-local-prefix=/home/dmarce1/local/gcc/ --enable-languages=c,c++,fortran,lto --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --disable-bootstrap
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.2.0 (GCC) 
+COLLECT_GCC_OPTIONS='-march=native' '-v' '-o' 'CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_d2db8.dir/'
+ /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/dmarce1/local/cmake/share/cmake-3.21/Modules/CMakeCCompilerABI.c -march=znver2 -mmmx -mpopcnt -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mavx2 -msse4a -mno-fma4 -mno-xop -mfma -mno-avx512f -mbmi -mbmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw -mno-avx512dq -mno-avx512cd -mno-avx512er -mno-avx512pf -mno-avx512vbmi -mno-avx512ifma -mno-avx5124vnniw -mno-avx5124fmaps -mno-avx512vpopcntdq -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni -mno-avx512bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -madx -mabm -mno-cldemote -mclflushopt -mclwb -mclzero -mcx16 -mno-enqcmd -mf16c -mfsgsbase -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe -mno-movdir64b -mno-movdiri -mmwaitx -mno-pconfig -mno-pku -mno-prefetchwt1 -mprfchw -mno-ptwrite -mrdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx -msha -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mwbnoinvd -mxsave -mxsavec -mxsaveopt -mxsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512fp16 --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=512 -mtune=znver2 -quiet -dumpdir CMakeFiles/cmTC_d2db8.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -version -o /tmp/ccVEDBfK.s
+GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/home/dmarce1/local/gcc//include/x86_64-linux-gnu"
+ignoring duplicate directory "/home/dmarce1/local/gcc/include"
+ignoring nonexistent directory "/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
+ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"
+ignoring nonexistent directory "/home/dmarce1/local/gsl/include"
+ignoring nonexistent directory "/home/dmarce1/local/chealpix/include"
+ignoring nonexistent directory "/home/dmarce1/local/mpi/include"
+ignoring nonexistent directory "/home/dmarce1/local/release/octotiger/include"
+ignoring nonexistent directory "/home/dmarce1/local/mpich/include"
+ignoring duplicate directory "/home/dmarce1/local/silo/include"
+ignoring nonexistent directory "/home/dmarce1/local/boost/include"
+ignoring duplicate directory "/home/dmarce1/local/vc/include"
+ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"
+ignoring duplicate directory "/home/dmarce1/local/gperftools/include"
+ignoring nonexistent directory "/home/dmarce1/local/cmake/include"
+ignoring duplicate directory "/home/dmarce1/local/gcc/include"
+  as it is a non-system directory that duplicates a system directory
+ignoring nonexistent directory "/home/dmarce1/local/healpix/include"
+ignoring duplicate directory "/home/dmarce1/local/fftw3/include"
+ignoring duplicate directory "/home/dmarce1/local/tbb/include"
+ignoring duplicate directory "/home/dmarce1/local/fftw3/include"
+ignoring nonexistent directory "/home/dmarce1/local/gsl/include"
+ignoring nonexistent directory "/home/dmarce1/local/chealpix/include"
+ignoring nonexistent directory "/home/dmarce1/local/mpi/include"
+ignoring duplicate directory "/home/dmarce1/local/mp-units/include"
+ignoring duplicate directory "/home/dmarce1/local/jemalloc/include"
+ignoring duplicate directory "/home/dmarce1/local/hdf5/include"
+ignoring nonexistent directory "/home/dmarce1/local/release/octotiger/include"
+ignoring duplicate directory "/home/dmarce1/local/release/hpx/include"
+ignoring nonexistent directory "/home/dmarce1/local/mpich/include"
+ignoring duplicate directory "/home/dmarce1/local/silo/include"
+ignoring nonexistent directory "/home/dmarce1/local/boost/include"
+ignoring duplicate directory "/home/dmarce1/local/vc/include"
+ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"
+ignoring duplicate directory "/home/dmarce1/local/gperftools/include"
+ignoring nonexistent directory "/home/dmarce1/local/cmake/include"
+ignoring duplicate directory "/home/dmarce1/local/gcc/include"
+  as it is a non-system directory that duplicates a system directory
+ignoring nonexistent directory "/home/dmarce1/local/healpix/include"
+ignoring duplicate directory "/home/dmarce1/local/fftw3/include"
+ignoring nonexistent directory "/usr/local/cuda-11.7/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /home/dmarce1/local/debug/hpx/include
+ /home/dmarce1/local/silo/include
+ /home/dmarce1/local/vc/include
+ /home/dmarce1/local/gperftools/include
+ /home/dmarce1/local/tbb/include
+ /home/dmarce1/local/fftw3/include
+ /home/dmarce1/local/mp-units/include
+ /home/dmarce1/local/jemalloc/include
+ /home/dmarce1/local/hdf5/include
+ /home/dmarce1/local/release/hpx/include
+ /usr/local/include
+ .
+ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include
+ /home/dmarce1/local/gcc//include
+ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+	compiled by GNU C version 9.4.0, GMP version 6.2.0, MPFR version 4.0.2, MPC version 1.1.0, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: b361a49dbb4f4827b2c5cbde5b6e80b7
+COLLECT_GCC_OPTIONS='-march=native' '-v' '-o' 'CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_d2db8.dir/'
+ as -v --64 -o CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o /tmp/ccVEDBfK.s
+GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34
+COMPILER_PATH=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib64/:/home/dmarce1//local/debug/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/usr/local/lib/:/usr/lib/x86_64-linux-gnu/hdf5/serial/:/usr/lib/x86_64-linux-gnu/:./:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-march=native' '-v' '-o' 'CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.'
+Linking C executable cmTC_d2db8
+/home/dmarce1/local/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2db8.dir/link.txt --verbose=1
+/home/dmarce1/local/gcc/bin/gcc -march=native   -v CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o -o cmTC_d2db8 
+Using built-in specs.
+COLLECT_GCC=/home/dmarce1/local/gcc/bin/gcc
+COLLECT_LTO_WRAPPER=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper
+Target: x86_64-pc-linux-gnu
+Configured with: ./configure --prefix=/home/dmarce1/local/gcc/ --with-local-prefix=/home/dmarce1/local/gcc/ --enable-languages=c,c++,fortran,lto --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --disable-bootstrap
+Thread model: posix
+Supported LTO compression algorithms: zlib zstd
+gcc version 12.2.0 (GCC) 
+COMPILER_PATH=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/
+LIBRARY_PATH=/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib64/:/home/dmarce1//local/debug/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/usr/local/lib/:/usr/lib/x86_64-linux-gnu/hdf5/serial/:/usr/lib/x86_64-linux-gnu/:./:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-march=native' '-v' '-o' 'cmTC_d2db8' '-dumpdir' 'cmTC_d2db8.'
+ /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccZGkFIc.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d2db8 /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/home/dmarce1/local/gcc/lib64/../lib64 -L/home/dmarce1//local/gcc/lib/../lib64 -L/home/dmarce1/local/gcc/lib64/../lib64 -L/home/dmarce1//local/gcc/lib/../lib64 -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/home/dmarce1//local/debug/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1//local/tbb/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/mp-units/lib -L/home/dmarce1//local/jemalloc/lib -L/home/dmarce1//local/hdf5/lib -L/home/dmarce1//local/release/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1/local/gcc/lib64 -L/home/dmarce1//local/gcc/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/tbb/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/mp-units/lib -L/home/dmarce1//local/jemalloc/lib -L/home/dmarce1//local/hdf5/lib -L/home/dmarce1//local/release/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1/local/gcc/lib64 -L/home/dmarce1//local/gcc/lib -L/home/dmarce1//local/fftw3/lib -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/hdf5/serial -L/usr/lib/x86_64-linux-gnu -L. -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /lib/x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-march=native' '-v' '-o' 'cmTC_d2db8' '-dumpdir' 'cmTC_d2db8.'
+make[1]: Leaving directory '/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/home/dmarce1/local/debug/hpx/include]
+    add: [/home/dmarce1/local/silo/include]
+    add: [/home/dmarce1/local/vc/include]
+    add: [/home/dmarce1/local/gperftools/include]
+    add: [/home/dmarce1/local/tbb/include]
+    add: [/home/dmarce1/local/fftw3/include]
+    add: [/home/dmarce1/local/mp-units/include]
+    add: [/home/dmarce1/local/jemalloc/include]
+    add: [/home/dmarce1/local/hdf5/include]
+    add: [/home/dmarce1/local/release/hpx/include]
+    add: [/usr/local/include]
+    add: [.]
+    add: [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+    add: [/home/dmarce1/local/gcc//include]
+    add: [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/home/dmarce1/local/debug/hpx/include] ==> [/home/dmarce1/local/debug/hpx/include]
+  collapse include dir [/home/dmarce1/local/silo/include] ==> [/home/dmarce1/local/silo/include]
+  collapse include dir [/home/dmarce1/local/vc/include] ==> [/home/dmarce1/local/vc/include]
+  collapse include dir [/home/dmarce1/local/gperftools/include] ==> [/home/dmarce1/local/gperftools/include]
+  collapse include dir [/home/dmarce1/local/tbb/include] ==> [/home/dmarce1/local/tbb/include]
+  collapse include dir [/home/dmarce1/local/fftw3/include] ==> [/home/dmarce1/local/fftw3/include]
+  collapse include dir [/home/dmarce1/local/mp-units/include] ==> [/home/dmarce1/local/mp-units/include]
+  collapse include dir [/home/dmarce1/local/jemalloc/include] ==> [/home/dmarce1/local/jemalloc/include]
+  collapse include dir [/home/dmarce1/local/hdf5/include] ==> [/home/dmarce1/local/hdf5/include]
+  collapse include dir [/home/dmarce1/local/release/hpx/include] ==> [/home/dmarce1/local/release/hpx/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  skipping relative include dir [.]
+  collapse include dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include] ==> [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+  collapse include dir [/home/dmarce1/local/gcc//include] ==> [/home/dmarce1/local/gcc/include]
+  collapse include dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed] ==> [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/home/dmarce1/local/debug/hpx/include;/home/dmarce1/local/silo/include;/home/dmarce1/local/vc/include;/home/dmarce1/local/gperftools/include;/home/dmarce1/local/tbb/include;/home/dmarce1/local/fftw3/include;/home/dmarce1/local/mp-units/include;/home/dmarce1/local/jemalloc/include;/home/dmarce1/local/hdf5/include;/home/dmarce1/local/release/hpx/include;/usr/local/include;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include;/home/dmarce1/local/gcc/include;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make -f Makefile cmTC_d2db8/fast && /usr/bin/make  -f CMakeFiles/cmTC_d2db8.dir/build.make CMakeFiles/cmTC_d2db8.dir/build]
+  ignore line: [make[1]: Entering directory '/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/home/dmarce1/local/gcc/bin/gcc   -march=native    -v -o CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o -c /home/dmarce1/local/cmake/share/cmake-3.21/Modules/CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/home/dmarce1/local/gcc/bin/gcc]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: ./configure --prefix=/home/dmarce1/local/gcc/ --with-local-prefix=/home/dmarce1/local/gcc/ --enable-languages=c,c++,fortran,lto --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --disable-bootstrap]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.2.0 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=native' '-v' '-o' 'CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_d2db8.dir/']
+  ignore line: [ /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1 -quiet -v -imultiarch x86_64-linux-gnu /home/dmarce1/local/cmake/share/cmake-3.21/Modules/CMakeCCompilerABI.c -march=znver2 -mmmx -mpopcnt -msse -msse2 -msse3 -mssse3 -msse4.1 -msse4.2 -mavx -mavx2 -msse4a -mno-fma4 -mno-xop -mfma -mno-avx512f -mbmi -mbmi2 -maes -mpclmul -mno-avx512vl -mno-avx512bw -mno-avx512dq -mno-avx512cd -mno-avx512er -mno-avx512pf -mno-avx512vbmi -mno-avx512ifma -mno-avx5124vnniw -mno-avx5124fmaps -mno-avx512vpopcntdq -mno-avx512vbmi2 -mno-gfni -mno-vpclmulqdq -mno-avx512vnni -mno-avx512bitalg -mno-avx512bf16 -mno-avx512vp2intersect -mno-3dnow -madx -mabm -mno-cldemote -mclflushopt -mclwb -mclzero -mcx16 -mno-enqcmd -mf16c -mfsgsbase -mfxsr -mno-hle -msahf -mno-lwp -mlzcnt -mmovbe -mno-movdir64b -mno-movdiri -mmwaitx -mno-pconfig -mno-pku -mno-prefetchwt1 -mprfchw -mno-ptwrite -mrdpid -mrdrnd -mrdseed -mno-rtm -mno-serialize -mno-sgx -msha -mno-shstk -mno-tbm -mno-tsxldtrk -mno-vaes -mno-waitpkg -mwbnoinvd -mxsave -mxsavec -mxsaveopt -mxsaves -mno-amx-tile -mno-amx-int8 -mno-amx-bf16 -mno-uintr -mno-hreset -mno-kl -mno-widekl -mno-avxvnni -mno-avx512fp16 --param l1-cache-size=32 --param l1-cache-line-size=64 --param l2-cache-size=512 -mtune=znver2 -quiet -dumpdir CMakeFiles/cmTC_d2db8.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -version -o /tmp/ccVEDBfK.s]
+  ignore line: [GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.0  MPFR version 4.0.2  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/gcc//include/x86_64-linux-gnu"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gcc/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/gsl/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/chealpix/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/mpi/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/release/octotiger/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/mpich/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/silo/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/boost/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/vc/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gperftools/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/cmake/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gcc/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/healpix/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/fftw3/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/tbb/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/fftw3/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/gsl/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/chealpix/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/mpi/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/mp-units/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/jemalloc/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/hdf5/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/release/octotiger/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/release/hpx/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/mpich/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/silo/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/boost/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/vc/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/hwloc/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gperftools/include"]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/cmake/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/gcc/include"]
+  ignore line: [  as it is a non-system directory that duplicates a system directory]
+  ignore line: [ignoring nonexistent directory "/home/dmarce1/local/healpix/include"]
+  ignore line: [ignoring duplicate directory "/home/dmarce1/local/fftw3/include"]
+  ignore line: [ignoring nonexistent directory "/usr/local/cuda-11.7/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /home/dmarce1/local/debug/hpx/include]
+  ignore line: [ /home/dmarce1/local/silo/include]
+  ignore line: [ /home/dmarce1/local/vc/include]
+  ignore line: [ /home/dmarce1/local/gperftools/include]
+  ignore line: [ /home/dmarce1/local/tbb/include]
+  ignore line: [ /home/dmarce1/local/fftw3/include]
+  ignore line: [ /home/dmarce1/local/mp-units/include]
+  ignore line: [ /home/dmarce1/local/jemalloc/include]
+  ignore line: [ /home/dmarce1/local/hdf5/include]
+  ignore line: [ /home/dmarce1/local/release/hpx/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ .]
+  ignore line: [ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+  ignore line: [ /home/dmarce1/local/gcc//include]
+  ignore line: [ /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+  ignore line: [	compiled by GNU C version 9.4.0  GMP version 6.2.0  MPFR version 4.0.2  MPC version 1.1.0  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: b361a49dbb4f4827b2c5cbde5b6e80b7]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=native' '-v' '-o' 'CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_d2db8.dir/']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o /tmp/ccVEDBfK.s]
+  ignore line: [GNU assembler version 2.34 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.34]
+  ignore line: [COMPILER_PATH=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib64/:/home/dmarce1//local/debug/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/usr/local/lib/:/usr/lib/x86_64-linux-gnu/hdf5/serial/:/usr/lib/x86_64-linux-gnu/:./:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=native' '-v' '-o' 'CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o' '-c' '-dumpdir' 'CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.']
+  ignore line: [Linking C executable cmTC_d2db8]
+  ignore line: [/home/dmarce1/local/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2db8.dir/link.txt --verbose=1]
+  ignore line: [/home/dmarce1/local/gcc/bin/gcc -march=native   -v CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o -o cmTC_d2db8 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/home/dmarce1/local/gcc/bin/gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Configured with: ./configure --prefix=/home/dmarce1/local/gcc/ --with-local-prefix=/home/dmarce1/local/gcc/ --enable-languages=c,c++,fortran,lto --enable-lto --enable-checking=release --disable-multilib --enable-shared=yes --enable-static=yes --enable-threads=posix --enable-gold=default --enable-plugins --enable-ld --with-plugin-ld=ld.gold --disable-bootstrap]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib zstd]
+  ignore line: [gcc version 12.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib64/../lib64/:/home/dmarce1//local/gcc/lib/../lib64/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/x86_64-linux-gnu/:/lib/../lib64/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib64/:/home/dmarce1//local/debug/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/tbb/lib/:/home/dmarce1//local/fftw3/lib/:/home/dmarce1//local/mp-units/lib/:/home/dmarce1//local/jemalloc/lib/:/home/dmarce1//local/hdf5/lib/:/home/dmarce1//local/release/hpx/lib/:/home/dmarce1//local/silo/lib/:/home/dmarce1//local/vc/lib/:/home/dmarce1//local/gperftools/lib/:/home/dmarce1/local/gcc/lib64/:/home/dmarce1//local/gcc/lib/:/home/dmarce1//local/fftw3/lib/:/usr/local/lib/:/usr/lib/x86_64-linux-gnu/hdf5/serial/:/usr/lib/x86_64-linux-gnu/:./:/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-march=native' '-v' '-o' 'cmTC_d2db8' '-dumpdir' 'cmTC_d2db8.']
+  link line: [ /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccZGkFIc.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d2db8 /lib/x86_64-linux-gnu/crt1.o /lib/x86_64-linux-gnu/crti.o /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/home/dmarce1/local/gcc/lib64/../lib64 -L/home/dmarce1//local/gcc/lib/../lib64 -L/home/dmarce1/local/gcc/lib64/../lib64 -L/home/dmarce1//local/gcc/lib/../lib64 -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/home/dmarce1//local/debug/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1//local/tbb/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/mp-units/lib -L/home/dmarce1//local/jemalloc/lib -L/home/dmarce1//local/hdf5/lib -L/home/dmarce1//local/release/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1/local/gcc/lib64 -L/home/dmarce1//local/gcc/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/tbb/lib -L/home/dmarce1//local/fftw3/lib -L/home/dmarce1//local/mp-units/lib -L/home/dmarce1//local/jemalloc/lib -L/home/dmarce1//local/hdf5/lib -L/home/dmarce1//local/release/hpx/lib -L/home/dmarce1//local/silo/lib -L/home/dmarce1//local/vc/lib -L/home/dmarce1//local/gperftools/lib -L/home/dmarce1/local/gcc/lib64 -L/home/dmarce1//local/gcc/lib -L/home/dmarce1//local/fftw3/lib -L/usr/local/lib -L/usr/lib/x86_64-linux-gnu/hdf5/serial -L/usr/lib/x86_64-linux-gnu -L. -L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /lib/x86_64-linux-gnu/crtn.o]
+    arg [/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/home/dmarce1/local/gcc/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccZGkFIc.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_d2db8] ==> ignore
+    arg [/lib/x86_64-linux-gnu/crt1.o] ==> obj [/lib/x86_64-linux-gnu/crt1.o]
+    arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
+    arg [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
+    arg [-L/home/dmarce1/local/gcc/lib64/../lib64] ==> dir [/home/dmarce1/local/gcc/lib64/../lib64]
+    arg [-L/home/dmarce1//local/gcc/lib/../lib64] ==> dir [/home/dmarce1//local/gcc/lib/../lib64]
+    arg [-L/home/dmarce1/local/gcc/lib64/../lib64] ==> dir [/home/dmarce1/local/gcc/lib64/../lib64]
+    arg [-L/home/dmarce1//local/gcc/lib/../lib64] ==> dir [/home/dmarce1//local/gcc/lib/../lib64]
+    arg [-L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+    arg [-L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/home/dmarce1//local/debug/hpx/lib] ==> dir [/home/dmarce1//local/debug/hpx/lib]
+    arg [-L/home/dmarce1//local/silo/lib] ==> dir [/home/dmarce1//local/silo/lib]
+    arg [-L/home/dmarce1//local/vc/lib] ==> dir [/home/dmarce1//local/vc/lib]
+    arg [-L/home/dmarce1//local/gperftools/lib] ==> dir [/home/dmarce1//local/gperftools/lib]
+    arg [-L/home/dmarce1//local/tbb/lib] ==> dir [/home/dmarce1//local/tbb/lib]
+    arg [-L/home/dmarce1//local/fftw3/lib] ==> dir [/home/dmarce1//local/fftw3/lib]
+    arg [-L/home/dmarce1//local/mp-units/lib] ==> dir [/home/dmarce1//local/mp-units/lib]
+    arg [-L/home/dmarce1//local/jemalloc/lib] ==> dir [/home/dmarce1//local/jemalloc/lib]
+    arg [-L/home/dmarce1//local/hdf5/lib] ==> dir [/home/dmarce1//local/hdf5/lib]
+    arg [-L/home/dmarce1//local/release/hpx/lib] ==> dir [/home/dmarce1//local/release/hpx/lib]
+    arg [-L/home/dmarce1//local/silo/lib] ==> dir [/home/dmarce1//local/silo/lib]
+    arg [-L/home/dmarce1//local/vc/lib] ==> dir [/home/dmarce1//local/vc/lib]
+    arg [-L/home/dmarce1//local/gperftools/lib] ==> dir [/home/dmarce1//local/gperftools/lib]
+    arg [-L/home/dmarce1/local/gcc/lib64] ==> dir [/home/dmarce1/local/gcc/lib64]
+    arg [-L/home/dmarce1//local/gcc/lib] ==> dir [/home/dmarce1//local/gcc/lib]
+    arg [-L/home/dmarce1//local/fftw3/lib] ==> dir [/home/dmarce1//local/fftw3/lib]
+    arg [-L/home/dmarce1//local/tbb/lib] ==> dir [/home/dmarce1//local/tbb/lib]
+    arg [-L/home/dmarce1//local/fftw3/lib] ==> dir [/home/dmarce1//local/fftw3/lib]
+    arg [-L/home/dmarce1//local/mp-units/lib] ==> dir [/home/dmarce1//local/mp-units/lib]
+    arg [-L/home/dmarce1//local/jemalloc/lib] ==> dir [/home/dmarce1//local/jemalloc/lib]
+    arg [-L/home/dmarce1//local/hdf5/lib] ==> dir [/home/dmarce1//local/hdf5/lib]
+    arg [-L/home/dmarce1//local/release/hpx/lib] ==> dir [/home/dmarce1//local/release/hpx/lib]
+    arg [-L/home/dmarce1//local/silo/lib] ==> dir [/home/dmarce1//local/silo/lib]
+    arg [-L/home/dmarce1//local/vc/lib] ==> dir [/home/dmarce1//local/vc/lib]
+    arg [-L/home/dmarce1//local/gperftools/lib] ==> dir [/home/dmarce1//local/gperftools/lib]
+    arg [-L/home/dmarce1/local/gcc/lib64] ==> dir [/home/dmarce1/local/gcc/lib64]
+    arg [-L/home/dmarce1//local/gcc/lib] ==> dir [/home/dmarce1//local/gcc/lib]
+    arg [-L/home/dmarce1//local/fftw3/lib] ==> dir [/home/dmarce1//local/fftw3/lib]
+    arg [-L/usr/local/lib] ==> dir [/usr/local/lib]
+    arg [-L/usr/lib/x86_64-linux-gnu/hdf5/serial] ==> dir [/usr/lib/x86_64-linux-gnu/hdf5/serial]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L.] ==> ignore
+    arg [-L/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
+    arg [CMakeFiles/cmTC_d2db8.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--push-state] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--pop-state] ==> ignore
+    arg [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o] ==> obj [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o]
+    arg [/lib/x86_64-linux-gnu/crtn.o] ==> obj [/lib/x86_64-linux-gnu/crtn.o]
+  collapse library dir [/home/dmarce1/local/gcc/lib64/../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1//local/gcc/lib/../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1/local/gcc/lib64/../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1//local/gcc/lib/../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+  collapse library dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/home/dmarce1//local/debug/hpx/lib] ==> [/home/dmarce1/local/debug/hpx/lib]
+  collapse library dir [/home/dmarce1//local/silo/lib] ==> [/home/dmarce1/local/silo/lib]
+  collapse library dir [/home/dmarce1//local/vc/lib] ==> [/home/dmarce1/local/vc/lib]
+  collapse library dir [/home/dmarce1//local/gperftools/lib] ==> [/home/dmarce1/local/gperftools/lib]
+  collapse library dir [/home/dmarce1//local/tbb/lib] ==> [/home/dmarce1/local/tbb/lib]
+  collapse library dir [/home/dmarce1//local/fftw3/lib] ==> [/home/dmarce1/local/fftw3/lib]
+  collapse library dir [/home/dmarce1//local/mp-units/lib] ==> [/home/dmarce1/local/mp-units/lib]
+  collapse library dir [/home/dmarce1//local/jemalloc/lib] ==> [/home/dmarce1/local/jemalloc/lib]
+  collapse library dir [/home/dmarce1//local/hdf5/lib] ==> [/home/dmarce1/local/hdf5/lib]
+  collapse library dir [/home/dmarce1//local/release/hpx/lib] ==> [/home/dmarce1/local/release/hpx/lib]
+  collapse library dir [/home/dmarce1//local/silo/lib] ==> [/home/dmarce1/local/silo/lib]
+  collapse library dir [/home/dmarce1//local/vc/lib] ==> [/home/dmarce1/local/vc/lib]
+  collapse library dir [/home/dmarce1//local/gperftools/lib] ==> [/home/dmarce1/local/gperftools/lib]
+  collapse library dir [/home/dmarce1/local/gcc/lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1//local/gcc/lib] ==> [/home/dmarce1/local/gcc/lib]
+  collapse library dir [/home/dmarce1//local/fftw3/lib] ==> [/home/dmarce1/local/fftw3/lib]
+  collapse library dir [/home/dmarce1//local/tbb/lib] ==> [/home/dmarce1/local/tbb/lib]
+  collapse library dir [/home/dmarce1//local/fftw3/lib] ==> [/home/dmarce1/local/fftw3/lib]
+  collapse library dir [/home/dmarce1//local/mp-units/lib] ==> [/home/dmarce1/local/mp-units/lib]
+  collapse library dir [/home/dmarce1//local/jemalloc/lib] ==> [/home/dmarce1/local/jemalloc/lib]
+  collapse library dir [/home/dmarce1//local/hdf5/lib] ==> [/home/dmarce1/local/hdf5/lib]
+  collapse library dir [/home/dmarce1//local/release/hpx/lib] ==> [/home/dmarce1/local/release/hpx/lib]
+  collapse library dir [/home/dmarce1//local/silo/lib] ==> [/home/dmarce1/local/silo/lib]
+  collapse library dir [/home/dmarce1//local/vc/lib] ==> [/home/dmarce1/local/vc/lib]
+  collapse library dir [/home/dmarce1//local/gperftools/lib] ==> [/home/dmarce1/local/gperftools/lib]
+  collapse library dir [/home/dmarce1/local/gcc/lib64] ==> [/home/dmarce1/local/gcc/lib64]
+  collapse library dir [/home/dmarce1//local/gcc/lib] ==> [/home/dmarce1/local/gcc/lib]
+  collapse library dir [/home/dmarce1//local/fftw3/lib] ==> [/home/dmarce1/local/fftw3/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu/hdf5/serial] ==> [/usr/lib/x86_64-linux-gnu/hdf5/serial]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> [/home/dmarce1/local/gcc/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit objs: [/lib/x86_64-linux-gnu/crt1.o;/lib/x86_64-linux-gnu/crti.o;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o;/lib/x86_64-linux-gnu/crtn.o]
+  implicit dirs: [/home/dmarce1/local/gcc/lib64;/home/dmarce1/local/gcc/lib/gcc/x86_64-pc-linux-gnu/12.2.0;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/usr/lib64;/home/dmarce1/local/debug/hpx/lib;/home/dmarce1/local/silo/lib;/home/dmarce1/local/vc/lib;/home/dmarce1/local/gperftools/lib;/home/dmarce1/local/tbb/lib;/home/dmarce1/local/fftw3/lib;/home/dmarce1/local/mp-units/lib;/home/dmarce1/local/jemalloc/lib;/home/dmarce1/local/hdf5/lib;/home/dmarce1/local/release/hpx/lib;/home/dmarce1/local/gcc/lib;/usr/local/lib;/usr/lib/x86_64-linux-gnu/hdf5/serial]
+  implicit fwks: []
+
+
