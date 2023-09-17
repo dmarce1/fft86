@@ -1,3 +1,0 @@
-/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/rebuild_cache.dir
-/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/edit_cache.dir
-/home/dmarce1/cuda-workspace/fftu/debug/CMakeFiles/fft86.dir
