@@ -26,136 +26,84 @@ void pfa(double* X, int N) {
 		}
 		Ns.push_back(nq);
 	}
-	dNs.resize(Ns.size());
-	for (int n = 0; n < Ns.size(); n++) {
-		for (int j = 1; j <= N / Ns[n]; j++) {
-			dNs[n] = j * (N / Ns[n]);
-			if (dNs[n] % Ns[n] == 1) {
+	int Nhi, Nlo;
+	Nhi = N;
+	Nlo = 1;
+	int dNhi = 0;
+	int dNlo = 0;
+	for (int KK = 0; KK < Ns.size(); KK++) {
+		int R;
+		int dN1;
+		const int N1 = Ns[KK];
+		const auto* W = get_twiddles(N1);
+		Nhi /= N1;
+		for (int j = 1;; j++) {
+			dN1 = j * (N / N1);
+			R = j;
+			if (dN1 % N1 == 1) {
 				break;
 			}
 		}
-	}
-	for (int KK = 0; KK < Ns.size(); KK++) {
-		int R;
-		int dN, dM;
-		const int N1 = Ns[KK];
-		const auto* W = get_twiddles(N1);
-		const int N2 = N / N1;
-		dN = dNs[KK];
-		R = dN / N2;
-		for (int j = 1; j <= N2; j++) {
-			dM = j * N1;
-			if (dM % N2 == 1) {
-				break;
+		if (Nlo > 1) {
+			for (int j = 1;; j++) {
+				dNlo = j * (N / Nlo);
+				if (dNlo % Nlo == 1) {
+					break;
+				}
+			}
+		}
+		if (Nhi > 1) {
+			for (int j = 1;; j++) {
+				dNhi = j * (N / Nhi);
+				if (dNhi % Nhi == 1) {
+					break;
+				}
 			}
 		}
 		Y.resize(N);
-		int beg = 0;
-		for (int l = 0; l < N2; l++) {
-			int k2 = beg;
-			for (int k = 0; k < N1; k++) {
-				int n1 = beg;
-				Y[k2] = 0.0;
-				for (int n = 0; n < N1; n++) {
-					const int Rnk = (R * n * k) % N1;
-					Y[k2] += X[n1] * (W[Rnk].real() - W[Rnk].imag());
-					n1 += dN;
-					while (n1 >= N) {
-						n1 -= N;
+		for (int nhi = 0; nhi < Nhi; nhi++) {
+			int k2hi, k2lo;
+			k2hi = (nhi * dNhi) % N;
+			k2lo = k2hi;
+			for (int nlo = 0; nlo < Nlo; nlo++) {
+				int k2lo0 = k2lo;
+				int k2hi0 = k2hi;
+				for (int k = 0; k < N1; k++) {
+					const int k2lo = (nhi * dNhi + nlo * dNlo + k * dN1) % N;
+					const int k2hi = (nhi * dNhi + nlo * dNlo + ((N1 - k) % N1) * dN1) % N;
+					if (k < N1 / 2 + 1) {
+						Y[k2hi] = 0.0;
+						Y[k2lo] = 0.0;
+						for (int n = 0; n < N1; n++) {
+							const int n1lo = (nhi * dNhi + nlo * dNlo + n * dN1) % N;
+							const int n1hi = (nhi * dNhi + ((Nlo - nlo) % Nlo) * dNlo + ((N1 - n) % N1) * dN1) % N;
+							const int Rnk = (R * n * k) % N1;
+							if (KK == 0) {
+								Y[k2lo] += X[n1lo] * (W[Rnk].real() - W[Rnk].imag());
+								if (k2hi != k2lo) {
+									Y[k2hi] += X[n1lo] * (W[Rnk].real() + W[Rnk].imag());
+								}
+							} else {
+								Y[k2lo] += X[n1lo] * W[Rnk].real() + X[n1hi] * W[Rnk].imag();
+								if (k2hi != k2lo) {
+									Y[k2hi] += X[n1lo] * W[Rnk].real() - X[n1hi] * W[Rnk].imag();
+								}
+							}
+						}
 					}
 				}
-				k2 += dN;
-				while (k2 >= N) {
-					k2 -= N;
-				}
-			}
-			beg += dM;
-			while (beg >= N) {
-				beg -= N;
 			}
 		}
 		for (int k = 0; k < N; k++) {
 			X[k] = Y[k];
 		}
+		Nlo *= N1;
 	}
-	std::vector<double> Wr(1 << Ns.size(), 0);
-	std::vector<double> Wi(1 << Ns.size(), 0);
-	std::vector<double> qr(1 << Ns.size(), 0);
-	std::vector<double> qi(1 << Ns.size(), 0);
-	Wr[0] = 1;
-	Wr[1] = 1;
-	Wi[0] = -1;
-	Wi[1] = 1;
-	for (int n = 1; n < Ns.size(); n++) {
-		int M = 1 << n;
-		qr = Wr;
-		qi = Wi;
-		std::fill(Wr.begin(), Wr.end(), 0);
-		std::fill(Wi.begin(), Wi.end(), 0);
-		for (int m = 0; m < M; m++) {
-			Wr[m] += qr[m] + qi[m];
-			Wr[m + M] += qr[m] - qi[m];
-			Wi[m] -= qr[m] - qi[m];
-			Wi[m + M] += qi[m] + qr[m];
-		}
-	}
-	double wtot = 0.0;
-	for (int n = 0; n < (1 << Ns.size()); n++) {
-		wtot += Wr[n];
-	}
-	wtot = 1.0 / wtot;
-	for (int n = 0; n < (1 << Ns.size()); n++) {
-		Wr[n] *= wtot;
-		Wi[n] *= wtot;
-	}
-	std::vector<int> B(Ns.size());
-	B[0] = 1;
-	for (int n = 1; n < Ns.size(); n++) {
-		B[n] = B[n - 1] * Ns[n - 1];
-	}
-	std::vector<int> J(1 << Ns.size(), 0);
-	std::vector<int> digs(Ns.size(), 0);
-	for (int k = 0; k < N; k++) {
-		X[k] = Y[k];
-	}
-	for (int n = 0; n < N; n++) {
-		int m = n;
-		int q = 0;
-		int nn = 0;
-		for (int k = Ns.size() - 1; k >= 0; k--) {
-			digs[k] = m / B[k];
-			m = m % B[k];
-			nn += digs[k] * dNs[k];
-			nn = nn % N;
-		}
-		for (int j = 0; j < J.size(); j++) {
-			auto D = digs;
-			int m = j;
-			int t = Ns.size() - 1;
-			while (m) {
-				if (m & 1) {
-					D[t] = (Ns[t] - D[t]) % Ns[t];
-				}
-				m >>= 1;
-				t--;
-			}
-			int k = 0;
-			for (int q = Ns.size() - 1; q >= 0; q--) {
-				k += D[q] * dNs[q];
-				k = k % N;
-			}
-			J[j] = k;
-		}
-		Y[nn] = 0.0;
-		for (int j = 0; j < J.size(); j++) {
-			if (nn >= N / 2 + 1) {
-				Y[nn] -= Wi[j] * X[J[j]];
-			} else {
-				Y[nn] += Wr[j] * X[J[j]];
-			}
-		}
-	}
-	for (int k = 0; k < N; k++) {
-		X[k] = Y[k];
+	for (int n = 0; n <= N - n; n++) {
+		const int p = (N - n) % N;
+		const auto hp = X[p];
+		const auto hn = X[n];
+		X[p] = 0.5 * (hp - hn);
+		X[n] = 0.5 * (hp + hn);
 	}
 }
